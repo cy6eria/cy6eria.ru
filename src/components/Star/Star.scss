@@ -1,3 +1,13 @@
 .star {
-    cursor: pointer;
+  cursor: pointer;
+
+  path {
+    fill: url(#default);
+  }
+
+  &:hover {
+    path {
+      fill: url(#selected);
+    }
+  }
 }
