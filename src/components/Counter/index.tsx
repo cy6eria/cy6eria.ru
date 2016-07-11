@@ -3,23 +3,51 @@ import './Counter.scss';
 import * as React from "react";
 
 import Star from '../Star';
-import {ITheme} from '../../interfaces/ITheme';
+import { ITheme } from '../../interfaces/ITheme';
+import { CounterState } from '../../CounterState';
 
 interface ICounterProps {
     theme: ITheme
 }
 
-export default class Counter extends React.Component<ICounterProps, void> {
-    render() {
-        const {theme} = this.props;
+interface ICounterState {
+    rate: number
+}
+
+export default class Counter extends React.Component<ICounterProps, ICounterState> {
+    constructor (props: ICounterProps) {
+        super(props);
         
+        this.state = {
+            rate: CounterState.getRate()
+        }
+    }
+    
+    componentDidMount (): void {
+        CounterState.subscribe(this.onUpdate.bind(this))
+    }
+
+    componentWillUnmount (): void {
+        CounterState.unsubscribe(this.onUpdate.bind(this))
+    }
+
+    onUpdate (rate: number): void {
+        this.setState({rate})
+    }
+    
+    renderStars () {
+        const {theme} = this.props;
+        const {rate} = this.state;
+
+        return [1,2,3,4,5].map((item) => {
+            return (<Star theme={theme} rate={item} key={item} selected={item <= rate}/>);
+        })
+    }
+
+    render() {
         return (
             <div className="counter">
-                <Star theme={theme}/>
-                <Star theme={theme}/>
-                <Star theme={theme}/>
-                <Star theme={theme}/>
-                <Star theme={theme}/>
+                {this.renderStars()}
             </div>
         );
     }
