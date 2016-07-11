@@ -11,7 +11,8 @@ interface ICounterProps {
 }
 
 interface ICounterState {
-    rate: number
+    rate?: number,
+    selectAll?: boolean
 }
 
 export default class Counter extends React.Component<ICounterProps, ICounterState> {
@@ -19,7 +20,8 @@ export default class Counter extends React.Component<ICounterProps, ICounterStat
         super(props);
         
         this.state = {
-            rate: CounterState.getRate()
+            rate: CounterState.getRate(),
+            selectAll: false
         }
     }
     
@@ -37,16 +39,24 @@ export default class Counter extends React.Component<ICounterProps, ICounterStat
     
     renderStars () {
         const {theme} = this.props;
-        const {rate} = this.state;
+        const {rate, selectAll} = this.state;
 
         return [1,2,3,4,5].map((item) => {
-            return (<Star theme={theme} rate={item} key={item} selected={item <= rate}/>);
+            return (<Star theme={theme} rate={item} key={item} selected={selectAll || item <= rate}/>);
         })
     }
 
-    render() {
+    selectAll (selectAll: boolean): void {
+        this.setState({selectAll});
+    }
+
+    render () {
         return (
-            <div className="counter">
+            <div
+                className="counter"
+                onMouseEnter={this.selectAll.bind(this, true)}
+                onMouseLeave={this.selectAll.bind(this, false)}
+            >
                 {this.renderStars()}
             </div>
         );

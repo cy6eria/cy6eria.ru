@@ -10,4 +10,8 @@
       fill: url(#selected);
     }
   }
+
+  &:hover ~ .star path {
+    fill: url(#default);
+  }
 }
