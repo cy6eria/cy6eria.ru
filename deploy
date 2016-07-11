@@ -1,3 +1,42 @@
 #!/usr/bin/env node
+require('shelljs/global');
 
-console.log('Deploy!');
+echo('====== Check git ======');
+if (!which('git')) {
+    echo('Sorry, this script requires git');
+    exit(1);
+} else {
+    if (exec('git checkout gh-pages').code !== 0) {
+      exec('git checkout -b gh-pages')
+    }
+
+    echo('Git ok!')
+}
+
+echo('====== Build ======');
+if (exec('webpack').code !== 0) {
+  echo('Error: Build failed');
+  exit(1);
+} else {
+    echo('Build ok!')
+}
+
+echo('====== Commit new build ======');
+if (exec('git add . && git commit -m "' + new Date() + ' build"').code !== 0) {
+  echo('Error: Commit failed');
+  exit(1);
+} else {
+    echo('Commit ok!')
+}
+
+echo('====== Deploy ======');
+if (exec('git push origin gh-pages').code !== 0) {
+  echo('Error: Deploy failed');
+  exit(1);
+} else {
+    echo('Build ok!')
+}
+
+exec('git checkout master')
+echo('====== Exit ======');
+exit(1);
