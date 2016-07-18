@@ -7,7 +7,9 @@ import Header from '../Header'
 export default class Layout extends React.Component<void, void> {
     render () {
         return (
-            <Header />   
+            <div className="layout">
+                <Header />
+            </div>   
         );
     }
 }
