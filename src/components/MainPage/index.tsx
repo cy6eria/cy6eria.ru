@@ -1,8 +1,9 @@
-import './Header.scss';
+import './MainPage.scss';
 
 import * as React from 'react';
+import { Link } from 'react-router';
 
-export default function Header () {
+export default function MainPage () {
     return (
         <header>
             <div className="image"/>
@@ -17,9 +18,8 @@ export default function Header () {
                 </div>
                 <div className="right-col">
                     <ul className="nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About me</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About me</Link></li>
                     </ul>
                 </div>
             </div>
