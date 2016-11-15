@@ -1,7 +1,8 @@
 import './MainPage.scss';
 
 import * as React from 'react';
-import { Link } from 'react-router';
+
+import MainNavigation from '../MainNavigation';
 
 export default function MainPage () {
     return (
@@ -13,14 +14,11 @@ export default function MainPage () {
                     <h2>
                         <span>developer</span>
                         <span>  traveler</span>
-                        <span>  asshole</span>
+                        <span>  badass</span>
                     </h2>
                 </div>
                 <div className="right-col">
-                    <ul className="nav">
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About me</Link></li>
-                    </ul>
+                    <MainNavigation align="right" />
                 </div>
             </div>
         </header>

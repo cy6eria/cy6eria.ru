@@ -1,0 +1,45 @@
+.nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+
+    li {
+        position: relative;
+
+        a {
+            font-size: 2rem;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            transition: color .5s ease;
+
+            &:after, &:before {
+                display: inline-block;
+                width: 1.5rem;
+                height: 1.5rem;
+                background-color: #fff;
+                transition: background-color .5s ease;
+            }
+
+            &:hover:after, &:hover:before {
+                background-color: orangered;
+            }
+        }
+    }
+
+    &.align-right {
+        text-align: right;
+
+        a:after {
+            content: '';
+            margin-left: .5rem;
+        }
+    }
+
+    &.align-left a:before {
+        content: '';
+        margin-right: .5rem;
+    }
+}

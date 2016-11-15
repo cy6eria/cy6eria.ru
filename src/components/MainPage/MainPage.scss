@@ -108,57 +108,22 @@ header {
             }
         }
 
-        .right-col {
-            text-align: right;
+        .right-col .nav li {
+            right: -15rem;
+            animation-duration: .5s;
+            animation-name: from-right;
+            animation-fill-mode: forwards;
 
-            .nav {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                list-style: none;
+            &:nth-child(1) {
+                animation-delay: 3.5s;
+            }
 
-                li {
-                    position: relative;
-                    right: -15rem;
-                    animation-duration: .5s;
-                    animation-name: from-right;
-                    animation-fill-mode: forwards;
+            &:nth-child(2) {
+                animation-delay: 4s;
+            }
 
-                    &:nth-child(1) {
-                        animation-delay: 3.5s;
-                    }
-
-                    &:nth-child(2) {
-                        animation-delay: 4s;
-                    }
-
-                    &:nth-child(3) {
-                        animation-delay: 4.5s;
-                    }
-
-                    a {
-                        font-size: 2rem;
-                        color: #fff;
-                        text-decoration: none;
-                        font-family: 'Roboto', sans-serif;
-                        font-weight: 100;
-                        transition: color .5s ease;
-
-                        &:after {
-                            content: '';
-                            display: inline-block;
-                            width: 1.5rem;
-                            height: 1.5rem;
-                            margin-left: .5rem;
-                            background-color: #fff;
-                            transition: background-color .5s ease;
-                        }
-
-                        &:hover:after {
-                            background-color: orangered;
-                        }
-                    }
-                }
+            &:nth-child(3) {
+                animation-delay: 4.5s;
             }
         }
     }
