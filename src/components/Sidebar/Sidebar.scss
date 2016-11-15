@@ -1,0 +1,59 @@
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: orangered;
+    width: 5rem;
+    transition: width .3s linear .15s;
+    padding: 1rem;
+
+    .trigger {
+        background: #fff;
+        height: .25rem;
+        position: relative;
+        top: .5rem;
+        width: 3rem;
+        opacity: 1;
+        transition: opacity .15s linear .45s;
+
+        &:before, &:after {
+            content: '';
+            display: block;
+            background: #fff;
+            height: .25rem;
+            position: relative;
+        }
+
+        &:before {
+            top: -.5rem;
+        }
+
+        &:after {
+            bottom: -.25rem;
+        }
+    }
+
+    .content {
+        position: relative;
+        padding: 1rem 1rem;
+        right: -200%;
+        opacity: 0;
+        transition: opacity linear .15s;
+    }
+
+    &.open {
+        width: 40%;
+
+        .trigger {
+            opacity: 0;
+            transition: opacity .15s linear;
+        }
+
+        .content {
+            right: 0;
+            opacity: 1;
+            transition: opacity .3s linear .45s;
+        }
+    }
+}
