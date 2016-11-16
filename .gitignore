@@ -2,5 +2,3 @@ node_modules
 .vscode
 .idea
 npm-debug.log
-public/*
-!public/index.html
