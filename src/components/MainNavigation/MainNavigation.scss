@@ -23,8 +23,21 @@
                 transition: background-color .5s ease;
             }
 
-            &:hover:after, &:hover:before {
-                background-color: orangered;
+            &.active {
+                pointer-events: none;
+                color: orangered;
+
+                &:before, &:after {
+                    background-color: orangered;
+                }
+            }
+
+            &:hover {
+                color: lighten($color: orangered, $amount: 20%);
+
+                &:after, &:before {
+                    background-color: lighten($color: orangered, $amount: 20%);
+                }
             }
         }
     }
