@@ -9,9 +9,11 @@ interface IProps {
 
 export default function MainNavigation (props: IProps) {
     return (
-        <ul className={`nav align-${props.align || 'left'}`}>
-            <li><Link to="/" activeClassName="active" onlyActiveOnIndex>Home</Link></li>
-            <li><Link to="/about" activeClassName="active">About me</Link></li>
-        </ul>
+        <nav>
+            <ul className={`nav align-${props.align || 'left'}`}>
+                <li><Link to="/" activeClassName="active" onlyActiveOnIndex>Home</Link></li>
+                <li><Link to="/about" activeClassName="active">About me</Link></li>
+            </ul>
+        </nav>
     )
 }

@@ -10,13 +10,13 @@ export default class Sidebar extends React.Component<any, any> {
         const {open} = this.props;
 
         return (
-            <div className={`sidebar ${open ? 'open' : ''}`} onClick={this.props.onToggle}>
+            <aside className={`sidebar ${open ? 'open' : ''}`} onClick={this.props.onToggle}>
                 <div className="trigger"/>
 
                 <div className="content">
                     <MainNavigation />
                 </div>
-            </div>
+            </aside>
         )
     }
 }
