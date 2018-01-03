@@ -15,7 +15,7 @@ export default class MainPage extends React.Component<void, void> {
                 <div className="image"/>
                 <div className="content">
                     <div className="left-col">
-                        <h1>Eugene Gundorov</h1>
+                        <h1>Eugene Gundorov!</h1>
                         <h2>
                             <span>developer</span>
                             <span>  traveler</span>
