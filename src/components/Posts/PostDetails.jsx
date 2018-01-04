@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-
-import { Post } from './Post';
+import { Link } from 'react-router-dom';
 
 export class PostDetails extends React.Component {
     constructor (props) {
@@ -14,10 +13,7 @@ export class PostDetails extends React.Component {
             error: null
         }
 
-        console.log(props)
-
         axios(`/api/posts/${props.match.params.id}`).then(resp => {
-            console.log(resp);
             this.setState({
                 content: resp.data,
                 isLoading: false
@@ -40,6 +36,9 @@ export class PostDetails extends React.Component {
         } else {
             view = (
                 <div>
+                    <div>
+                    <Link to={`/blog/${this.props.match.params.id}/edit`}>Редактировать</Link>
+                    </div>
                     <h3>{content.title}</h3>
                     <ReactMarkdown source={content.intro} />
                     <ReactMarkdown source={content.post} />

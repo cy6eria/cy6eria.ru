@@ -5,7 +5,28 @@ export class Form extends React.Component {
     constructor (props) {
         super(props);
 
-        this.state = {};
+        const itemId = props.match.params.id;
+
+        this.state = {
+            isLoading: !!itemId,
+            itemId
+        };
+
+        if (itemId) {
+            axios(`/api/posts/${itemId}`).then(resp => {
+                this.setState({
+                    title: resp.data.title,
+                    intro: resp.data.intro,
+                    post: resp.data.post,
+                    isLoading: false
+                });
+            }).catch(error => {
+                this.setState({
+                    error,
+                    isLoading: false
+                });
+            });
+        }
     }
 
     handleChange = (e) => {
@@ -18,29 +39,45 @@ export class Form extends React.Component {
     }
 
     handleSubmit = (e) => {
+        const { itemId } = this.state;
         e.preventDefault();
 
         axios({
-            url: '/api/posts/new',
-            method: 'post',
+            url: itemId ? `/api/posts/${itemId}` : '/api/posts/new',
+            method: itemId ? 'put' : 'post',
             data: this.state,
         }).then(resp => {
-            console.log(resp);
+            this.setState({
+                title: resp.data.title,
+                intro: resp.data.intro,
+                post: resp.data.post,
+                itemId: resp.data.id
+            })
         }).catch(error => {
             console.log(error);
         });
     }
 
     render () {
-        const { title, intro } = this.props;
+        const { title, intro, post, isLoading, itemId } = this.state;
 
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="title" onChange={this.handleChange} />
-                <textarea name="intro" cols="30" rows="10" onChange={this.handleChange} />
-                <textarea name="post" cols="30" rows="10" onChange={this.handleChange} />
-                <button type="submit">Создать</button>
-            </form>
-        );
+        let view;
+
+        if (isLoading) {
+            view = (
+                <h1>Загружаем...</h1>
+            );
+        } else {
+            view = (
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="title" value={title} onChange={this.handleChange} />
+                    <textarea name="intro" value={intro} onChange={this.handleChange} />
+                    <textarea name="post" value={post} onChange={this.handleChange} />
+                    <button type="submit">{ !!itemId ? 'Обновить' : 'Создать'}</button>
+                </form>
+            );
+        }
+
+        return view;
     }
 }

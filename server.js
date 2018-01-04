@@ -42,11 +42,27 @@ app.post('/api/posts/new', (req, res) => {
         });
 
         newPost.save().then((data) => {
-            res.send(newPost.toJSON());
+            res.send(data);
         }).catch((err) => {
             res.status(500).send(err);
         });
     }
+});
+
+app.put('/api/posts/:id', (req, res) => {
+    Models.Post.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then((post) => {
+        post.update(req.body).then((data) => {
+            res.send(data);
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
 });
 
 app.get('*', function(req, res){

@@ -23,6 +23,7 @@ export default function Layout (props) {
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage} />
                 <Route path="/blog/new" component={Form} />
+                <Route path="/blog/:id/edit" component={Form} />
                 <Route path="/blog/:id" component={PostDetails} />
                 <Route path="/blog" component={Posts} />
                 <Route component={NoMatch} />
