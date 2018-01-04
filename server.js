@@ -1,69 +1,56 @@
-const http = require('http');
-const fs = require('fs');
-const mime = require('mime');
 const path = require('path');
+const express = require('express');
+const bodyParser = require("body-parser");
 const Sequelize = require('sequelize');
-const dbConfig = require('./config/config.json');
 
 const Models = require('./models');
 
-const { host, dialect, username, password, database } = dbConfig.development;
+const app = express()
 
-function sendFile (response, filePath, fileContent) {
-    response.writeHead(200, {
-        'Content-Type': mime.lookup(path.basename(filePath))
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/api/posts', (req, res) => {
+    Models.Post.findAndCountAll().then((data) => {
+        res.send(data);
+    }).catch((err) => {
+        res.status(500).send(err);
     });
-    response.end(fileContent);
-};
+});
 
-function successAPICall (response, responseContent) {
-    response.writeHead(200, {
-        'Content-Type': 'text/json'
+app.get('/api/posts/:id', (req, res) => {
+    Models.Post.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then((data) => {
+        res.send(data);
+    }).catch((err) => {
+        res.status(500).send(err);
     });
-    response.end(JSON.stringify(responseContent));
-}
+});
 
-function failedAPICall (response, err) {
-    response.writeHead(500, {
-        'Content-Type': 'text/json'
-    });
-    response.end(err);
-}
+app.post('/api/posts/new', (req, res) => {
+    const { title, intro, post } = req.body;
 
-const server = http.createServer((request, response) => {
-    switch (request.url) {
-        case '/api/posts': {
-            Models.Post.findAndCountAll().then((data) => {
-                successAPICall(response, data)
-            }).catch((err) => {
-                failedAPICall(response, err);
-            });
-            break;
-        }
-        case '/api/users': {
-            Models.User.findAndCountAll().then((data) => {
-                successAPICall(response, data)
-            }).catch((err) => {
-                failedAPICall(response, err);
-            });
-            break;
-        }
-        default: {
-            let filePath = request.url;
+    if (!(title || intro || post)) {
+        res.status(500).send('Необходимо указать заголовок, введение и текст записи.');   
+    } else {
+        const newPost = Models.Post.build({
+            title, intro, post
+        });
 
-            fs.readFile(`./public/${filePath}`, (err, data) => {
-                if (err) {
-                    fs.readFile(`./public/index.html`, (err, data) => {
-                        sendFile(response, 'index.html', data);
-                    })
-                } else {
-                    sendFile(response, filePath, data);
-                }
-            });   
-        }
+        newPost.save().then((data) => {
+            res.send(newPost.toJSON());
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
     }
 });
 
-server.listen(5100, () => {
-    console.log('Server started on localhost:5100.')
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname+'/public/index.html'));
 });
+
+app.listen(5100, () => console.log('Example app listening on port 5100!'))

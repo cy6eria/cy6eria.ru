@@ -8,8 +8,9 @@ import {
 
 import './Layout.scss';
 
-import MainPage from "../MainPage";
-import AboutPage from "../AboutPage";
+import MainPage from '../MainPage';
+import AboutPage from '../AboutPage';
+import { Posts, Form, PostDetails } from '../Posts';
 
 function NoMatch () {
     return (<h1>404</h1>)
@@ -21,7 +22,9 @@ export default function Layout (props) {
             <Switch>
                 <Route exact path="/" component={MainPage} />
                 <Route path="/about" component={AboutPage} />
-                <Route path="/blog" component={AboutPage} />
+                <Route path="/blog/new" component={Form} />
+                <Route path="/blog/:id" component={PostDetails} />
+                <Route path="/blog" component={Posts} />
                 <Route component={NoMatch} />
             </Switch>
         </Router>
