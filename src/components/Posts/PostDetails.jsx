@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 import { Post } from './Post';
 
@@ -40,8 +41,8 @@ export class PostDetails extends React.Component {
             view = (
                 <div>
                     <h3>{content.title}</h3>
-                    <div>{content.intro}</div>
-                    <div>{content.post}</div>
+                    <ReactMarkdown source={content.intro} />
+                    <ReactMarkdown source={content.post} />
                 </div>
             );
         }
