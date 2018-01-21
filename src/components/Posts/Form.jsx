@@ -5,7 +5,7 @@ export class Form extends React.Component {
     constructor (props) {
         super(props);
 
-        const itemId = props.match.params.id;
+        const itemId = props.itemId;
 
         this.state = {
             isLoading: !!itemId,

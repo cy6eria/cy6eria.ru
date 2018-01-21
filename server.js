@@ -25,6 +25,12 @@ app.get('/api/posts/:id', (req, res) => {
             id: req.params.id
         }
     }).then((data) => {
+        if (!data) {
+            res.status(404).send({
+                message: 'Не удалось найти запись.'
+            });
+        }
+
         res.send(data);
     }).catch((err) => {
         res.status(500).send(err);

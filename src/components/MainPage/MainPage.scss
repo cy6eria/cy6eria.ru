@@ -58,82 +58,47 @@ header {
 
     .content {
         padding: 4rem;
-        display: flex;
+        display: block;
         color: #fff;
-        align-items: flex-start;
-        justify-content: space-between;
         background-color: rgba(0, 0, 0, .1);
 
-        .left-col {
-            align-self: flex-start;
-
-            h1, h2 {
-                margin: 0;
-            }
-
-            h1 {
-                font-size: 5rem;
-                line-height: 5rem;
-                margin: 0 0 1rem;
-                position: relative;
-                left: -50rem;
-
-                animation-duration: .5s;
-                animation-name: from-left;
-                animation-delay: 1.5s;
-                animation-fill-mode: forwards;
-            }
-
-            h2 {
-                font-size: 3rem;
-
-                span {
-                    opacity: 0;
-                    animation-duration: .5s;
-                    animation-name: fade-in;
-                    animation-fill-mode: forwards;
-
-                    &:nth-child(1) {
-                        animation-delay: 2s;
-                    }
-
-                    &:nth-child(2) {
-                        animation-delay: 2.5s;
-                    }
-
-                    &:nth-child(3) {
-                        animation-delay: 3s;
-                    }
-                }
-            }
+        h1, h2 {
+            margin: 0;
         }
 
-        .right-col .nav li {
-            right: -15rem;
+        h1 {
+            font-size: 5rem;
+            line-height: 5rem;
+            margin: 0 0 1rem;
+            position: relative;
+            left: -50rem;
+
             animation-duration: .5s;
-            animation-name: from-right;
+            animation-name: from-left;
+            animation-delay: 1.5s;
             animation-fill-mode: forwards;
-
-            &:nth-child(1) {
-                animation-delay: 3.5s;
-            }
-
-            &:nth-child(2) {
-                animation-delay: 4s;
-            }
-
-            &:nth-child(3) {
-                animation-delay: 4.5s;
-            }
         }
-    }
 
-    @media (max-width: 900px) {
-        .content {
-            flex-direction: column-reverse;
+        h2 {
+            font-size: 3rem;
 
-            .left-col, .right-col {
-                width: 100%;
+            span {
+                opacity: 0;
+                animation-duration: .5s;
+                animation-name: fade-in;
+                animation-fill-mode: forwards;
+
+                &:nth-child(1) {
+                    animation-delay: 2s;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: 2.5s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: 3s;
+                }
             }
         }
     }
@@ -142,18 +107,16 @@ header {
         .content {
             padding: 2rem;
 
-            .left-col {
-                h1 {
-                    font-size: 3rem;
-                    line-height: 3rem;
-                }
+            h1 {
+                font-size: 3rem;
+                line-height: 3rem;
+            }
 
-                h2 {
-                    font-size: 2rem;
+            h2 {
+                font-size: 2rem;
 
-                    span {
-                        display: block;
-                    }
+                span {
+                    display: block;
                 }
             }
         }   

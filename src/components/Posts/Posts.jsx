@@ -14,7 +14,6 @@ export class Posts extends React.Component {
         }
 
         axios('/api/posts').then(resp => {
-            console.log(resp);
             this.setState({
                 posts: resp.data.rows,
                 isLoading: false
@@ -37,7 +36,7 @@ export class Posts extends React.Component {
         } else if (posts.length === 0) {
             view = (<h1>Нечего показать.</h1>);
         } else {
-            view = (<ul>{posts.map(post => <Post {...post} />)}</ul>);
+            view = (<ul>{posts.map(post => <Post key={post.id} {...post} />)}</ul>);
         }
 
         return view;
