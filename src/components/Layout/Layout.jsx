@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import UniversalRouter from 'universal-router';
 
 import './Layout.scss';
@@ -8,10 +8,13 @@ import { history } from '../../core';
 
 import MainPage from '../MainPage';
 import AboutPage from '../AboutPage';
+import { Login } from '../Login';
 import { Posts, Form, PostDetails } from '../Posts';
 
 import Sidebar from '../Sidebar';
 import { Loader } from '../Loader';
+
+import { getPosts } from '../../actions';
 
 function NoMatch () {
     return (<h1>404</h1>)
@@ -27,11 +30,18 @@ const routes = [
         action: () => <AboutPage />
     },
     {
+        path: '/login',
+        action: () => <Login />
+    },
+    {
         path: '/posts',
         children: [
             {
                 path: '',
-                action: () => <Posts />
+                async action ({ store }) {
+                    await store.dispatch(getPosts());
+                    return <Posts />
+                }
             },
             {
                 path: '/new',
@@ -69,17 +79,24 @@ const routes = [
     }
 ];
 
-const router = new UniversalRouter(routes);
-
 export class Layout extends React.Component {
+    static childContextTypes = {
+        store: PropTypes.object
+    }
+
     constructor (props) {
         super(props);
 
         this.state = {
             open: false,
-            isLoading: false,
             component: null
         };
+
+        this.router = new UniversalRouter(routes, {
+            context: {
+                store: props.store
+            }
+        });
 
         this.handleCurrentRoute(history.location.pathname);
         
@@ -88,8 +105,12 @@ export class Layout extends React.Component {
         });
     }
 
+    getChildContext() {
+        return { store: this.props.store };
+    }
+
     handleCurrentRoute = (pathname) => {
-        router.resolve({ pathname }).then(component => {
+        this.router.resolve({ pathname }).then(component => {
             this.setState({ component });
         });
     }
@@ -101,7 +122,9 @@ export class Layout extends React.Component {
     }
     
     render () {
-        const { open, isLoading, component } = this.state;
+        const { open, component } = this.state;
+        const { isLoading } = this.props;
+
         return (
             <div>
                 <div className="content">
