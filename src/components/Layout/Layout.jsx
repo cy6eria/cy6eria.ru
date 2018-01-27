@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import UniversalRouter from 'universal-router';
+import moment from 'moment';
+import 'moment/locale/ru';
 
 import './Layout.scss';
 
@@ -10,7 +12,8 @@ import { history } from '../../core';
 import MainPage from '../MainPage';
 import AboutPage from '../AboutPage';
 import { Login } from '../Login';
-import { Posts, Form, PostDetails } from '../Posts';
+import { Posts, Form } from '../Posts';
+import { PostDetails } from '../PostDetails';
 
 import Sidebar from '../Sidebar';
 import { Loader } from '../Loader';
@@ -21,14 +24,22 @@ function NoMatch () {
     return (<h1>404</h1>)
 }
 
+moment.locale('ru');
+
 const routes = [
     {
         path: '',
-        action: () => <MainPage />
+        action: () => {
+            document.title = 'Home - Eugene Gundorov aka cy6eria';
+            return (<MainPage />);
+        }
     },
     {
         path: '/about',
-        action: () => <AboutPage />
+        action: () => {
+            document.title = 'About me - Eugene Gundorov aka cy6eria';
+            return (<AboutPage />);
+        }
     },
     {
         path: '/login',
@@ -127,15 +138,15 @@ export class Layout extends React.Component {
         const { isLoading } = this.props;
 
         return (
-            <div>
-                <div className="content">
+            <Fragment>
+                <div className="main">
                     {component}
                 </div>
                 <div className={`overlay ${open || isLoading ? 'show' : ''}`}>
                     <Loader show={isLoading} />
                 </div>
                 <Sidebar onToggle={this.handleToggle} open={open}/>
-            </div>
+            </Fragment>
         );
     }
 }

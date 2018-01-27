@@ -3,10 +3,6 @@ import * as React from 'react';
 import './AboutPage.scss';
 
 export default class AboutPage extends React.PureComponent {
-    componentWillMount () {
-        document.title = 'About me - Eugene Gundorov aka cy6eria'
-    }
-    
     render () {
         return (
             <div className="about-page">

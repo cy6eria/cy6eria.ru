@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux';
 
 import { getPosts } from '../../actions'
 
-import { Post } from './Post';
+import { Post } from '../Post';
+
+import './Posts.scss';
 
 class PostsView extends React.Component {
     render () {
@@ -15,10 +17,18 @@ class PostsView extends React.Component {
         if (posts.length === 0) {
             view = (<h1>Нечего показать.</h1>);
         } else {
-            view = (<ul>{posts.map(post => <Post key={post.id} {...post} />)}</ul>);
+            view = (
+                <ul className="posts__list">
+                    {posts.map(post => <Post key={post.id} {...post} />)}
+                </ul>
+            );
         }
 
-        return view;
+        return (
+            <div className="posts">
+                {view}
+            </div>
+        );
     }
 }
 
