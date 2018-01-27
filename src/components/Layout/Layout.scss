@@ -25,6 +25,13 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
 }
 
+pre {
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
 .main {
     padding-right: 5rem;
 }
