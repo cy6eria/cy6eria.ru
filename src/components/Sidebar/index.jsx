@@ -1,11 +1,12 @@
-import * as React from 'react';
-import {Link} from 'react-router';
+import React from 'react';
+
+import { Link } from '../Link';
 
 import './Sidebar.scss';
 
 import MainNavigation from '../MainNavigation';
 
-export default class Sidebar extends React.Component<any, any> {
+export default class Sidebar extends React.Component {
     render () {
         const {open} = this.props;
 

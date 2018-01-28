@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -6,13 +5,18 @@ const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
+import register from 'ignore-styles'
 
-const secret = require('./secret');
+import { secret } from './server';
+import { getHTML } from './src/server';
 const Models = require('./models');
 
-const app = express()
+register(['.scss'])
+const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('public', {
+    index: false
+}));
 app.use(cookieParser());
 app.use(session({
     secret,
@@ -128,8 +132,9 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
 });
 
 
-app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname+'/public/index.html'));
-});
+app.get('*', getHTML);
+// app.get('*', function(req, res){
+//     res.sendFile(path.join(__dirname+'/public/index.html'));
+// });
 
 app.listen(5100, () => console.log('Example app listening on port 5100!'))

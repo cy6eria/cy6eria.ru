@@ -1,8 +1,8 @@
 import './MainPage.scss';
 
-import * as React from 'react';
+import React from 'react';
 
-export default class MainPage extends React.Component<void, void> {
+export class MainPage extends React.Component {
     render () {
         return (
             <section className="main_page">

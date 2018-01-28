@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './AboutPage.scss';
 
-export default class AboutPage extends React.PureComponent {
+export class AboutPage extends React.PureComponent {
     render () {
         return (
             <div className="about-page">
