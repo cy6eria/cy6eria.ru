@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import 'moment/locale/ru';
 
 import './Layout.scss';
 
@@ -10,8 +8,6 @@ import { history } from '../../core';
 
 import Sidebar from '../Sidebar';
 import { Loader } from '../Loader';
-
-moment.locale('ru');
 
 export class Layout extends React.Component {
     static childContextTypes = {

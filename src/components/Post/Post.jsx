@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import moment from 'moment';
 
 import { Link } from '../Link';
+
+import { format } from '../../core';
 
 import './Post.scss';
 
@@ -19,7 +20,7 @@ export class Post extends React.PureComponent {
                 </div>
 
                 <div className="post__date">
-                    {moment(createdAt).locale('ru').format('dddd, DD MMMM YYYY')}
+                    {format(createdAt)}
                 </div>
                 
                 <ReactMarkdown source={intro} />

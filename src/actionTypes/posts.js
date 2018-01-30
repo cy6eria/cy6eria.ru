@@ -1,3 +1,7 @@
 export const LOAD_POSTS_START = 'posts/LOAD_POSTS_START';
 export const LOAD_POSTS_SUCCESS = 'posts/LOAD_POSTS_SUCCESS';
 export const LOAD_POSTS_FAILURE = 'posts/LOAD_POSTS_FAILURE';
+
+export const LOAD_DETAILS_START = 'posts/LOAD_DETAILS_START';
+export const LOAD_DETAILS_SUCCESS = 'posts/LOAD_DETAILS_SUCCESS';
+export const LOAD_DETAILS_FAILURE = 'posts/LOAD_DETAILS_FAILURE';

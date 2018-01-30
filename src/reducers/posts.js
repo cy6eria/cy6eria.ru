@@ -1,4 +1,4 @@
-import { LOAD_POSTS_SUCCESS } from '../actionTypes';
+import { LOAD_POSTS_SUCCESS, LOAD_DETAILS_SUCCESS } from '../actionTypes';
 
 const initialState = {
     items: [],
@@ -12,6 +12,13 @@ export const posts = (state = initialState, action) => {
             nextState = {
                 ...state,
                 items: action.posts
+            };
+            break;
+        }
+        case LOAD_DETAILS_SUCCESS: {
+            nextState = {
+                ...state,
+                postDetails: action.postDetails
             };
             break;
         }

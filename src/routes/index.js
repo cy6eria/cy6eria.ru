@@ -4,7 +4,7 @@ import UniversalRouter from 'universal-router';
 import { Login, Posts, Form, PostDetails } from '../components';
 import { NoMatch, MainPage, AboutPage } from '../pages';
 
-import { getPosts } from '../actions';
+import { getPosts, getPost } from '../actions';
 
 export const routes = [
     {
@@ -42,15 +42,11 @@ export const routes = [
                 children: [
                     {
                         path: '',
-                        async action (context) {
-                            const resp = await axios(`/api/posts/${context.params.id}`);
+                        async action ({ store, params }) {
+                            const postId = params.id;
+                            await store.dispatch(getPost(postId));
                             
-                            return (
-                                <PostDetails
-                                    id={context.params.id}
-                                    content={resp.data}
-                                />
-                            );
+                            return <PostDetails />;
                         }
                     },
                     {

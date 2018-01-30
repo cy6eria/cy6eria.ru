@@ -1,43 +1,65 @@
-import axios from 'axios';
+import { request } from '../core';
+
+import { setIsLoadingState } from './';
 
 import {
     LOAD_POSTS_START,
     LOAD_POSTS_SUCCESS,
     LOAD_POSTS_FAILURE,
-    IS_LOADING
+    LOAD_DETAILS_START,
+    LOAD_DETAILS_SUCCESS,
+    LOAD_DETAILS_FAILURE
 } from '../actionTypes';
 
 export const getPosts = (page = 1) => {
     return (dispatch) => {
-        dispatch({
-            type: IS_LOADING,
-            isLoading: true
-        });
+        dispatch(setIsLoadingState(true));
         dispatch({
             type: LOAD_POSTS_START,
             page
         });
         
-        return axios('/api/posts').then(resp => {
+        return request('/api/posts').then(resp => {
+            dispatch(setIsLoadingState(false));
             dispatch({
                 type: LOAD_POSTS_SUCCESS,
                 posts: resp.data.rows
             });
-            dispatch({
-                type: IS_LOADING,
-                isLoading: false
-            });
         }).catch(err => {
+            dispatch(setIsLoadingState(false));
             dispatch({
                 type: LOAD_POSTS_FAILURE,
                 error: {
                     text: 'Во время выполения запроса произошла ошибка.'
                 }
             });
-            dispatch({
-                type: IS_LOADING,
-                isLoading: false
-            });
         });
+    }
+}
+
+export const getPost = (postId) => {
+    return (dispatch) => {
+        if (postId) {
+            dispatch(setIsLoadingState(true));
+            dispatch({ type: LOAD_DETAILS_START });
+            
+            return request(`/api/posts/${postId}`).then(resp => {
+                dispatch(setIsLoadingState(false));
+                dispatch({
+                    type: LOAD_DETAILS_SUCCESS,
+                    postDetails: resp.data
+                });
+            }).catch(err => {
+                dispatch(setIsLoadingState(false));
+                dispatch({
+                    type: LOAD_DETAILS_FAILURE,
+                    error: {
+                        text: 'Во время выполения запроса произошла ошибка.'
+                    }
+                });
+            });
+        } else {
+            return Promise.reject();
+        }
     }
 }

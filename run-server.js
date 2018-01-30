@@ -133,8 +133,5 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
 
 
 app.get('*', getHTML);
-// app.get('*', function(req, res){
-//     res.sendFile(path.join(__dirname+'/public/index.html'));
-// });
 
 app.listen(5100, () => console.log('Example app listening on port 5100!'))
