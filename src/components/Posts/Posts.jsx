@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getPosts } from '../../actions'
-
 import { Post } from '../Post';
 
 import './Posts.scss';
@@ -36,8 +34,6 @@ const mapStateToProps = ({ posts }) => ({
     posts: posts.items
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-    getPosts
-}, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch);
 
 export const Posts = connect(mapStateToProps, mapDispatchToProps)(PostsView);

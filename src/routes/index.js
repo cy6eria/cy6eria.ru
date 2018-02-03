@@ -4,7 +4,7 @@ import UniversalRouter from 'universal-router';
 import { Login, Posts, Form, PostDetails } from '../components';
 import { NoMatch, MainPage, AboutPage } from '../pages';
 
-import { getPosts, getPost } from '../actions';
+import { getPosts, getPost } from '../actions/posts';
 
 export const routes = [
     {
