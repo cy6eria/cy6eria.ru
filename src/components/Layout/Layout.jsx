@@ -6,7 +6,7 @@ import './Layout.scss';
 
 import { history } from '../../core';
 
-import Sidebar from '../Sidebar';
+import { Sidebar } from '../Sidebar';
 import { Loader } from '../Loader';
 
 export class Layout extends React.Component {

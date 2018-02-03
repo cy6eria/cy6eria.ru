@@ -1,22 +1,23 @@
-.sidebar {
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: peachpuff;
-    width: 5rem;
-    transition: width .3s linear .15s;
-    padding: 1rem;
-    box-sizing: border-box;
+.trigger {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #eee;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 40px;
+    opacity: 0;
 
-    .trigger {
-        background: #fff;
-        height: .25rem;
-        position: relative;
-        top: .5rem;
-        width: 3rem;
-        opacity: 1;
+    &.show {
+        opacity: .75;
         transition: opacity .15s linear .45s;
+    }
+
+    > div {
+        background: #fff;
+        width: 3rem;
+        height: .25rem;
 
         &:before, &:after {
             content: '';
@@ -25,32 +26,39 @@
             height: .25rem;
             position: relative;
         }
-
+    
         &:before {
             top: -.5rem;
         }
-
+    
         &:after {
             bottom: -.25rem;
         }
     }
+}
+
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: peachpuff;
+    width: 25rem;
+    max-width: 100%;
+    transition: transform .3s linear .15s;
+    padding: 1rem;
+    box-sizing: border-box;
+    transform: translateX(100%);
 
     .content {
         position: relative;
         padding: 1rem 1rem;
-        right: -200%;
         opacity: 0;
         transition: opacity linear .15s;
     }
 
     &.open {
-        width: 38rem;
-        max-width: 100%;
-
-        .trigger {
-            opacity: 0;
-            transition: opacity .15s linear;
-        }
+        transform: translateX(0%);
 
         .content {
             right: 0;

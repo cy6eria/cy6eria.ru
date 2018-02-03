@@ -33,7 +33,7 @@ pre {
 }
 
 .main {
-    padding-right: 5rem;
+    padding-right: 6rem;
 }
 
 .overlay {
@@ -49,5 +49,11 @@ pre {
     &.show {
         opacity: 1;
         left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .main {
+        padding-right: 0;
     }
 }

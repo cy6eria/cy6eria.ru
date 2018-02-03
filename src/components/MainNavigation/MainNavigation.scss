@@ -1,58 +1,38 @@
-.nav {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    list-style: none;
+nav {
+    a {
+        font-size: 2rem;
+        color: #fff;
+        text-decoration: none;
+        font-family: Roboto, sans-serif;
+        font-weight: 100;
+        transition: color .5s ease;
+        display: block;
 
-    li {
-        position: relative;
-
-        a {
-            font-size: 2rem;
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 100;
-            transition: color .5s ease;
-
-            &:after, &:before {
-                display: inline-block;
-                width: 1.5rem;
-                height: 1.5rem;
-                background-color: #fff;
-                transition: background-color .5s ease;
-            }
-
-            &.active {
-                pointer-events: none;
-                color: orangered;
-
-                &:before, &:after {
-                    background-color: orangered;
-                }
-            }
-
-            &:hover {
-                color: lighten($color: orangered, $amount: 20%);
-
-                &:after, &:before {
-                    background-color: lighten($color: orangered, $amount: 20%);
-                }
-            }
-        }
-    }
-
-    &.align-right {
-        text-align: right;
-
-        a:after {
+        &:before {
             content: '';
-            margin-left: .5rem;
+            display: inline-block;
+            margin-right: 1rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #fff;
+            transition: background-color .5s ease;
         }
-    }
 
-    &.align-left a:before {
-        content: '';
-        margin-right: .5rem;
+        &.active {
+            pointer-events: none;
+            color: orangered;
+
+            &:before, &:after {
+                background-color: orangered;
+            }
+        }
+
+        &:hover {
+            color: lighten($color: orangered, $amount: 20%);
+
+            &:before {
+                background-color: lighten($color: orangered, $amount: 20%);
+            }
+        }
     }
 }
