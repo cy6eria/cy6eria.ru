@@ -1,6 +1,6 @@
 import { request } from '../core';
 
-import { setIsLoadingState } from './';
+import { setIsLoadingState } from './app';
 
 import {
     LOAD_POSTS_START,
