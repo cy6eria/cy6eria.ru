@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import './style/icons.css';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk'
