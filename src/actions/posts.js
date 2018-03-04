@@ -1,4 +1,4 @@
-import { request } from '../core';
+import axios from 'axios';
 
 import { setIsLoadingState } from './app';
 
@@ -19,7 +19,7 @@ export const getPosts = (page = 1) => {
             page
         });
         
-        return request('/api/posts').then(resp => {
+        return axios.get('/api/posts').then(resp => {
             dispatch(setIsLoadingState(false));
             dispatch({
                 type: LOAD_POSTS_SUCCESS,
@@ -43,7 +43,7 @@ export const getPost = (postId) => {
             dispatch(setIsLoadingState(true));
             dispatch({ type: LOAD_DETAILS_START });
             
-            return request(`/api/posts/${postId}`).then(resp => {
+            return axios.get(`/api/posts/${postId}`).then(resp => {
                 dispatch(setIsLoadingState(false));
                 dispatch({
                     type: LOAD_DETAILS_SUCCESS,
