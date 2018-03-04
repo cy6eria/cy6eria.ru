@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
     IS_LOADING, 
-    LOGIN_START
+    LOGIN_SUCCESS
 } from '../actionTypes';
 
 export const setIsLoadingState = (state) => ({
@@ -12,24 +12,16 @@ export const setIsLoadingState = (state) => ({
 
 export const login = (username, password) => {
     return (dispatch) => {
-        dispatch({ type: LOGIN_START });
+        dispatch({ type: IS_LOADING, isLoading: true });
         
         return axios({
             method: 'post',
             url: '/api/login',
             data: { username, password }
         }).then(resp => {
-            // dispatch({
-            //     type: LOAD_POSTS_SUCCESS,
-            //     posts: resp.data.rows
-            // });
+            dispatch({ type: LOGIN_SUCCESS });
         }).catch(err => {
-            // dispatch({
-            //     type: LOAD_POSTS_FAILURE,
-            //     error: {
-            //         text: 'Во время выполения запроса произошла ошибка.'
-            //     }
-            // });
+            dispatch({ type: IS_LOADING, isLoading: false });
         });
     }
 }

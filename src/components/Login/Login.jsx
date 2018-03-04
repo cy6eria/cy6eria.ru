@@ -23,8 +23,9 @@ export class Login extends React.Component {
         this.props.login(username, password);
     }
 
-    render () {
+    renderForm = () => {
         const { username, password } = this.state;
+
         return (
             <form onSubmit={this.hadleSubmit}>
                 <div>
@@ -46,5 +47,9 @@ export class Login extends React.Component {
                 <button type="submit">Войти</button>
             </form>
         );
+    }
+
+    render () {
+        return this.props.isLoggedIn ? <div>Вы вошли!</div> : this.renderForm();
     }
 }
