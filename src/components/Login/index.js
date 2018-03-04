@@ -5,7 +5,7 @@ import { Login as LoginView } from './Login';
 import { login } from '../../actions'
 
 const mapStateToProps = ({ app }) => ({
-    
+    isLoggedIn: app.isLoggedIn
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

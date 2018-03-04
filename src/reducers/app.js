@@ -1,7 +1,8 @@
-import { IS_LOADING } from '../actionTypes';
+import { IS_LOADING, LOGIN_SUCCESS } from '../actionTypes';
 
 const initialState = {
-    isLoading: false
+    isLoading: false,
+    isLoggedIn: false
 }
 
 export const app = (state = initialState, action) => {
@@ -12,6 +13,15 @@ export const app = (state = initialState, action) => {
             nextState = {
                 ...state,
                 isLoading: action.isLoading
+            };
+            break;
+        }
+        case LOGIN_SUCCESS: {
+            console.log(action)
+            nextState = {
+                ...state,
+                isLoading: false,
+                isLoggedIn: true
             };
             break;
         }
