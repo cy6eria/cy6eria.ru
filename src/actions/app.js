@@ -1,9 +1,8 @@
-import axios from 'axios';
-
 import {
     IS_LOADING, 
     LOGIN_SUCCESS
 } from '../actionTypes';
+import { request } from '../core';
 
 export const setIsLoadingState = (state) => ({
     type: IS_LOADING,
@@ -14,7 +13,7 @@ export const login = (username, password) => {
     return (dispatch) => {
         dispatch({ type: IS_LOADING, isLoading: true });
         
-        return axios({
+        return request({
             method: 'post',
             url: '/api/login',
             data: { username, password }
