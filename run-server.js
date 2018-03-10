@@ -28,6 +28,13 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 passport.use(new LocalStrategy(
     (username, password, done) => {
         Models.User.findOne({ where: { username } }).then(user => {
