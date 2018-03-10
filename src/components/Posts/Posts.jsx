@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -16,9 +16,9 @@ class PostsView extends React.Component {
             view = (<h1>Нечего показать.</h1>);
         } else {
             view = (
-                <ul className="posts__list">
+                <Fragment>
                     {posts.map(post => <Post key={post.id} {...post} />)}
-                </ul>
+                </Fragment>
             );
         }
 

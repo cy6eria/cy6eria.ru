@@ -13,17 +13,19 @@ class PostDetailsView extends React.PureComponent {
         const { title, createdAt, intro, post } = this.props;
 
         return (
-            <section className="post_details">
-                <header>{title}</header>
+            <article className="post_details">
+                <h1>{title}</h1>
 
-                <div className="post_details__date">
+                <time dateTime={createdAt} className="post_details__date">
                     {format(createdAt)}
-                </div>
+                </time>
 
-                <ReactMarkdown source={intro} />
+                <section>
+                    <ReactMarkdown source={intro} />
+                </section>
 
                 <ReactMarkdown source={post} />
-            </section>
+            </article>
         );
     }
 }
