@@ -1,14 +1,19 @@
 .post_details {
     padding: 2rem 4rem 4rem;
 
-    header {
+    h1:first-child {
         font-size: 3rem;
         margin: 0 0 .5rem;
     }
 
     &__date {
+        display: block;
         margin-bottom: 2rem;
         text-transform: capitalize;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 2rem;
     }
 
     p {

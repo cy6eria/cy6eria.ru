@@ -12,16 +12,16 @@ export class Post extends React.PureComponent {
         const { id, title, intro, createdAt } = this.props;
 
         return (
-            <section className="post">
-                <div className="post__header">
+            <article className="post">
+                <header className="post__header">
                     <Link href={`/posts/${id}`}>
                         <h3>{title}</h3>
                     </Link>
-                </div>
+                </header>
 
-                <div className="post__date">
+                <time dateTime={createdAt} className="post__date">
                     {format(createdAt)}
-                </div>
+                </time>
                 
                 <ReactMarkdown source={intro} />
                 
@@ -30,7 +30,7 @@ export class Post extends React.PureComponent {
                         Читать дальше →
                     </Link>
                 </div>
-            </section>
+            </article>
         );
     }
 }
