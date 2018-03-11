@@ -30,8 +30,6 @@ export const getHTML = (req, res) => {
             );
             const helmet = Helmet.renderStatic();
 
-            console.log(helmet.to)
-
             result = result.replace('### React content goes here ###', HTML);
             result = result.replace('### Head content goes here ###', [
                 helmet.title.toString(),
