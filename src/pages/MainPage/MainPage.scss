@@ -44,7 +44,7 @@
     }
 
     .image {
-        background-image: url('./images/background.jpg');
+        background-image: url('http://res.cloudinary.com/cy6eria/image/upload/c_scale,w_2445/v1520800212/background.jpg');
         background-position: 30% 50%;
         background-size: cover;
         height: 100%;
@@ -100,23 +100,28 @@
                 }
             }
         }
+    }
 
-        .social {
-            opacity: 0;
-            position: absolute;
-            bottom: 2rem;
-            animation-duration: .5s;
-            animation-name: fade-in;
-            animation-delay: 3.5s;
-            animation-fill-mode: forwards;
+    &__social_buttons {
+        opacity: 0;
+        position: absolute;
+        bottom: 2rem;
+        animation-duration: .5s;
+        animation-name: fade-in;
+        animation-delay: 3.5s;
+        animation-fill-mode: forwards;
 
-            a {
-                font-size: 30px;
-                text-decoration: none;
-                margin-right: 10px;
-            }
+        a span:before {
+            color: #fff;
         }
     }
+
+    @media (max-width: 1023px) {
+        .image {
+            background-image: url('http://res.cloudinary.com/cy6eria/image/upload/c_scale,w_1008/v1520800212/background.jpg');
+        }
+    }
+    
 
     @media (max-width: 639px) {
         .content {

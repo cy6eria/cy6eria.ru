@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Helmet } from 'react-helmet';
 
 import { Link } from '../Link';
 
@@ -10,10 +11,19 @@ import './PostDetails.scss';
 
 class PostDetailsView extends React.PureComponent {
     render () {
-        const { title, createdAt, intro, post } = this.props;
+        const { id, title, createdAt, intro, post } = this.props;
 
         return (
             <article className="post_details">
+                <Helmet>
+                    <title>{title} - Eugene Gundorov (cy6eria)</title>
+                    <meta name="description" content={intro} /> 
+                    <meta property="og:title" content={`${title} - Eugene Gundorov (cy6eria)`} />
+                    <meta property="og:description" content={intro} />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:url" content={`https://cy6eria.ru/posts/${id}`} />
+                </Helmet>
+
                 <h1>{title}</h1>
 
                 <time dateTime={createdAt} className="post_details__date">
@@ -31,9 +41,9 @@ class PostDetailsView extends React.PureComponent {
 }
 
 const mapStateToProps = ({ posts }) => {
-    const { title, createdAt, intro, post } = posts.postDetails;
+    const { id, title, createdAt, intro, post } = posts.postDetails;
     
-    return { title, createdAt, intro, post };
+    return { title, createdAt, intro, post, id };
 };
 
 const mapDispatchToProps = (dispatch) => ({});

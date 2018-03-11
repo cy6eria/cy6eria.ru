@@ -1,11 +1,24 @@
 import './MainPage.scss';
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
+import { Social } from '../../components';
 
 export class MainPage extends React.Component {
     render () {
         return (
             <section className="main_page">
+                <Helmet>
+                    <title>Главная - Eugene Gundorov (cy6eria)</title>
+                    <meta name="description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." /> 
+                    <meta property="og:title" content="Главная - Eugene Gundorov (cy6eria)" />
+                    <meta property="og:description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:url" content="https://cy6eria.ru/about" />
+                    <meta property="og:image" content="http://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg" />
+                </Helmet>
+
                 <div className="image"/>
                 <div className="content">
                     <h1>Eugene Gundorov</h1>
@@ -15,23 +28,7 @@ export class MainPage extends React.Component {
                         <span>  badass</span>
                     </h2>
 
-                    <div className="social">
-                        <a href="https://github.com/cy6eria" target="_blank" rel="noopener">
-                            <span className="icon-github" />
-                        </a>
-                        <a href="https://twitter.com/cy6eria" target="_blank" rel="noopener">
-                            <span className="icon-twitter" />
-                        </a>
-                        <a href="https://vk.com/cy6eria" target="_blank" rel="noopener">
-                            <span className="icon-vk" />
-                        </a>
-                        <a href="https://www.instagram.com/cy6eria" target="_blank" rel="noopener">
-                            <span className="icon-instagram" />
-                        </a>
-                        <a href="https://www.facebook.com/cy6eria" target="_blank" rel="noopener">
-                            <span className="icon-facebook" />
-                        </a>
-                    </div>
+                    <Social className="main_page__social_buttons" />                   
                 </div>
             </section>
         );   

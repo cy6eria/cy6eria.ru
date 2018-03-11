@@ -3,7 +3,8 @@ import fs from 'fs';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk';
+import { Helmet } from "react-helmet";
 
 import { Layout } from './components';
 import reducers from './reducers';
@@ -19,6 +20,7 @@ export const getHTML = (req, res) => {
         const router = createRouter(store);
         
         router.resolve({ pathname: req.url }).then(component => {
+            let result = data;
             const HTML = ReactDOMServer.renderToString(
                 <Layout
                     store={store}
@@ -26,10 +28,15 @@ export const getHTML = (req, res) => {
                     component={component}
                 />
             );
+            const helmet = Helmet.renderStatic();
+
+            result = result.replace('### React content goes here ###', HTML);
+            result = result.replace('### Head content goes here ###', [
+                helmet.title.toString(),
+                helmet.meta.toString()
+            ].join(''));
         
-            res.send(data.replace('### React content goes here ###', HTML));
+            res.send(result);
         }).catch(err => console.log(err));
-        
-        
     });
 }

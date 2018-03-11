@@ -1,3 +1,20 @@
 .about-page {
     padding: 2rem 7rem 2rem 2rem;
+
+    h1 {
+        font-size: 3rem;
+        margin: 0 0 2rem;
+    }
+
+    figure {
+        margin: 0 0 1.5rem;
+    }
+
+    figcaption {
+        margin: 1rem 0 1.5rem;
+    }
+
+    img {
+        max-width: 100%;
+    }
 }
