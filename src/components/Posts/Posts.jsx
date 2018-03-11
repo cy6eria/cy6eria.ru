@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Helmet } from 'react-helmet';
 
 import { Post } from '../Post';
 
@@ -24,6 +25,14 @@ class PostsView extends React.Component {
 
         return (
             <div className="posts">
+                <Helmet>
+                    <title>Блог - Eugene Gundorov (cy6eria)</title>
+                    <meta name="description" content="Статьи на различную тематику связанные с программированием и робототехникой." /> 
+                    <meta property="og:title" content="Блог - Eugene Gundorov (cy6eria)" />
+                    <meta property="og:description" content="Статьи на различную тематику связанные с программированием и робототехникой." />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:url" content="https://cy6eria.ru/posts" />
+                </Helmet>
                 {view}
             </div>
         );

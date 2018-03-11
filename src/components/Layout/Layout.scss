@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic);
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic');
 
 div {
     box-sizing: border-box;
@@ -23,6 +23,11 @@ html, body, #app {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem;
 }
 
 pre {

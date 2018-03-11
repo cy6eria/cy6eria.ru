@@ -3,7 +3,7 @@ import './style/icons.css';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk'
-import * as React from 'react';
+import React from 'react';
 import { hydrate } from 'react-dom';
 
 import { history } from './core';
@@ -11,6 +11,12 @@ import reducers from './reducers';
 import { createRouter } from './routes';
 
 import { Layout } from './components/Layout';
+
+// Runing WhyDidYouUpdate tool. 
+if (process.env.NODE_ENV !== 'production') {
+  const {whyDidYouUpdate} = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
 
 const store = createStore(
     reducers,
