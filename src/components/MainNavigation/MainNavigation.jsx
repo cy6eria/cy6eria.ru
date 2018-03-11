@@ -7,9 +7,9 @@ import './MainNavigation.scss';
 export function MainNavigation (props) {
     return (
         <nav>
-            <Link href="/">Home</Link>
-            <Link href="/about">About me</Link>
-            <Link href="/posts">Blog</Link>
+            <Link href="/">Главная</Link>
+            <Link href="/about">Обо мне</Link>
+            <Link href="/posts">Блог</Link>
         </nav>
     );
 }

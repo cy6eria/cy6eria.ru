@@ -21,6 +21,7 @@ export class Sidebar extends React.PureComponent {
                 <button
                     className={cx('trigger', { show: !open })}
                     onClick={onToggle}
+                    aria-label={open ? 'Скрыть меню' : 'Показать меню'}
                 >
                     <div />
                 </button>
@@ -29,7 +30,7 @@ export class Sidebar extends React.PureComponent {
                     className={cx('sidebar', { open })}
                     onClick={onToggle}
                 >
-                    <div className="content ololo">
+                    <div className="content">
                         <MainNavigation />
                     </div>
                 </aside>
