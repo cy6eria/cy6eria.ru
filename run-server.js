@@ -5,9 +5,9 @@ const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-import register from 'ignore-styles'
+import register from 'ignore-styles';
 
-import { secret } from './server';
+import { secret, renderSitemap } from './server';
 import { getHTML } from './src/server';
 const Models = require('./models');
 
@@ -69,7 +69,11 @@ function checkAuthentication (req, res, next) {
 }
 
 app.get('/api/posts', (req, res) => {
-    Models.Post.findAndCountAll().then((data) => {
+    Models.Post.findAndCountAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then((data) => {
         res.send(data);
     }).catch((err) => {
         res.status(500).send(err);
@@ -138,6 +142,12 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
     }
 });
 
+app.get('/sitemap.xml', (req, res) => {
+    renderSitemap().then((data) => {
+        res.set('Content-Type', 'text/xml');
+        res.send(data);
+    });
+});
 
 app.get('*', getHTML);
 
