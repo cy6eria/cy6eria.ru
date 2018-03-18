@@ -4,11 +4,13 @@ module.exports = {
     target: 'node',
     context: path.resolve(__dirname),
     entry: {
-        app: [ path.resolve(__dirname, './run-server.js') ]
+        app: [ path.resolve(__dirname, './src/server.jsx') ]
     },
     output: {
+        library: 'App',
+        libraryTarget: 'umd',
         path: path.resolve(__dirname),
-        filename: 'run-server.production.js'
+        filename: 'server.production.js'
     },
     module: {
         rules: [
@@ -26,8 +28,8 @@ module.exports = {
     resolve: {
         extensions: ['.jsx', '.js']
     },
-    externals: ['tedious', 'pg-hstore'],
-    optimization: {
-        minimize: false
-    }
+    //externals: ['tedious', 'pg-hstore'],
+    // optimization: {
+    //     minimize: false
+    // }
 };

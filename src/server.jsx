@@ -10,11 +10,10 @@ import { Layout } from './components';
 import reducers from './reducers';
 import { createRouter } from './routes';
 
-const indexPath = '../public/index.html';
+const indexPath = './public/index.html';
 
 export const getHTML = (req, res) => {
     fs.readFile(indexPath, 'utf8', (err, data) => {
-        console.log(path.resolve(__dirname), err);
         const store = createStore(
             reducers,
             undefined,

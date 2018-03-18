@@ -5,13 +5,15 @@ const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-//const register = require('ignore-styles');
 
-import { secret, renderSitemap } from './server';
-import { getHTML } from './src/server';
+const config = require('./serverConfig');
+const renderSitemap = require('./server').renderSitemap;
 const Models = require('./models');
 
-//register(['.scss', '.css']);
+const ignoreStyles = require('ignore-styles').default(['.scss', '.css']);
+const prod = process.env.NODE_ENV === 'production';
+const { getHTML } = prod ? require('./server.production.js') : require('./src/server');
+
 const app = express();
 
 app.use(express.static('public', {
@@ -19,7 +21,7 @@ app.use(express.static('public', {
 }));
 app.use(cookieParser());
 app.use(session({
-    secret,
+    secret: config.secret,
     resave: true,
     saveUninitialized: true
 }));
