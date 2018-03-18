@@ -5,13 +5,13 @@ const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-import register from 'ignore-styles';
+//const register = require('ignore-styles');
 
 import { secret, renderSitemap } from './server';
 import { getHTML } from './src/server';
 const Models = require('./models');
 
-register(['.scss'])
+//register(['.scss', '.css']);
 const app = express();
 
 app.use(express.static('public', {

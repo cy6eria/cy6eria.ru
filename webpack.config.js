@@ -1,41 +1,33 @@
-var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var autoprefixer = require('autoprefixer');
+const path = require('path');
 
 module.exports = {
+    target: 'node',
+    context: path.resolve(__dirname),
     entry: {
-        app: [
-            path.resolve(__dirname, './src/index.tsx')
-        ]
+        app: [ path.resolve(__dirname, './run-server.js') ]
     },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, './public/')
+        path: path.resolve(__dirname),
+        filename: 'run-server.production.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.tsx?$/,
-                loader: "ts-loader"
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: 'babel-loader'
             },
             {
-                test:   /\.scss$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css!sass!postcss")
+                test:   /\.(css|scss)$/,
+                use: [ 'ignore-loader' ]
             }
-        ],
-        preLoaders: [
-            { test: /\.js$/, loader: "source-map-loader" }
         ]
     },
-    postcss: function () {
-        return [autoprefixer];
-    },
-    devtool: "source-map",
     resolve: {
-        root: path.resolve(__dirname),
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ['.jsx', '.js']
     },
-    plugins: [
-        new ExtractTextPlugin("style.css")
-    ]
+    externals: ['tedious', 'pg-hstore'],
+    optimization: {
+        minimize: false
+    }
 };
