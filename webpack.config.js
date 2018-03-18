@@ -27,9 +27,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['.jsx', '.js']
-    },
-    //externals: ['tedious', 'pg-hstore'],
-    // optimization: {
-    //     minimize: false
-    // }
+    }
 };

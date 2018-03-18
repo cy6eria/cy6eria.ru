@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import path from 'path';
 import fs from 'fs';
 import React from 'react';

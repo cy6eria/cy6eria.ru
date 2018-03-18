@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "parcel watch ./src/index.html -d public --public-url /",
     "build": "parcel build ./src/index.html -d public --public-url / && webpack",
-    "server": "babel-node run-server.js",
+    "server": "babel-node run-server.js"
   },
   "author": "",
   "license": "ISC",
