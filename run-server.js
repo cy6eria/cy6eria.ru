@@ -5,13 +5,15 @@ const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-import register from 'ignore-styles'
 
-import { secret } from './server';
-import { getHTML } from './src/server';
+const config = require('./serverConfig');
+const renderSitemap = require('./server').renderSitemap;
 const Models = require('./models');
 
-register(['.scss'])
+const ignoreStyles = require('ignore-styles').default(['.scss', '.css']);
+const prod = process.env.NODE_ENV === 'production';
+const { getHTML } = prod ? require('./server.production.js') : require('./src/server');
+
 const app = express();
 
 app.use(express.static('public', {
@@ -19,7 +21,7 @@ app.use(express.static('public', {
 }));
 app.use(cookieParser());
 app.use(session({
-    secret,
+    secret: config.secret,
     resave: true,
     saveUninitialized: true
 }));
@@ -69,7 +71,11 @@ function checkAuthentication (req, res, next) {
 }
 
 app.get('/api/posts', (req, res) => {
-    Models.Post.findAndCountAll().then((data) => {
+    Models.Post.findAndCountAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then((data) => {
         res.send(data);
     }).catch((err) => {
         res.status(500).send(err);
@@ -138,6 +144,12 @@ app.post('/api/login', passport.authenticate('local'), (req, res) => {
     }
 });
 
+app.get('/sitemap.xml', (req, res) => {
+    renderSitemap().then((data) => {
+        res.set('Content-Type', 'text/xml');
+        res.send(data);
+    });
+});
 
 app.get('*', getHTML);
 

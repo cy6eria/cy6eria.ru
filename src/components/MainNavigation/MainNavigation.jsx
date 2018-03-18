@@ -8,9 +8,11 @@ export class MainNavigation extends React.PureComponent {
     render () {
         return (
             <nav>
-                <Link href="/">Главная</Link>
-                <Link href="/about">Обо мне</Link>
-                <Link href="/posts">Блог</Link>
+                <ul>
+                    <li><Link href="/">Главная</Link></li>
+                    <li><Link href="/about">Обо мне</Link></li>
+                    <li><Link href="/posts">Блог</Link></li>
+                </ul>
             </nav>
         );
     }

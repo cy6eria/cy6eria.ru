@@ -4,4 +4,7 @@ node_modules
 npm-debug.log
 .cache
 public
-secret.js
+serverConfig.json
+server.production.js
+nginx.conf
+

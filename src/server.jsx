@@ -4,14 +4,16 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 import { Layout } from './components';
 import reducers from './reducers';
 import { createRouter } from './routes';
 
+const indexPath = './public/index.html';
+
 export const getHTML = (req, res) => {
-    fs.readFile(path.resolve(__dirname, '../public/index.html'), 'utf8', (err, data) => {
+    fs.readFile(indexPath, 'utf8', (err, data) => {
         const store = createStore(
             reducers,
             undefined,

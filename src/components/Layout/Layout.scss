@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic');
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 div {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
