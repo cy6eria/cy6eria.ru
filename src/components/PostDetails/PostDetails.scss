@@ -1,24 +1,51 @@
 .post_details {
     padding: 2rem 4rem 4rem;
 
-    h1:first-child {
-        font-size: 3rem;
-        margin: 0 0 .5rem;
+    header {
+        margin: -2rem -4rem 4rem;
+        padding: 24rem 4rem 2rem;
+        color: #fff;
+        background-position: center;
+
+        h1 {
+            max-width: 800px;
+            font-size: 3rem;
+            margin: 0 auto .5rem;
+        }
     }
 
     &__date {
+        max-width: 800px;
         display: block;
-        margin-bottom: 2rem;
+        margin: 0 auto 2rem;
         text-transform: capitalize;
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-size: 2rem;
     }
+
+    &__content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 767px) {
     .post_details {
         padding: 2rem 1rem;
+
+        header {
+            margin: -2rem -1rem 2rem;
+            padding: 14rem 1rem 2rem;
+    
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        &__date {
+            margin-bottom: 0;
+        }
     }
 }

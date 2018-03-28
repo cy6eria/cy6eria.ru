@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import './Form.scss';
+
 export class Form extends React.Component {
     constructor (props) {
         super(props);
@@ -18,6 +20,7 @@ export class Form extends React.Component {
                     title: resp.data.title,
                     intro: resp.data.intro,
                     post: resp.data.post,
+                    picture: resp.data.picture,
                     isLoading: false
                 });
             }).catch(error => {
@@ -51,6 +54,7 @@ export class Form extends React.Component {
                 title: resp.data.title,
                 intro: resp.data.intro,
                 post: resp.data.post,
+                picture: resp.data.picture,
                 itemId: resp.data.id
             })
         }).catch(error => {
@@ -59,7 +63,7 @@ export class Form extends React.Component {
     }
 
     render () {
-        const { title, intro, post, isLoading, itemId } = this.state;
+        const { title, intro, post, picture, isLoading, itemId } = this.state;
 
         let view;
 
@@ -69,10 +73,41 @@ export class Form extends React.Component {
             );
         } else {
             view = (
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="title" value={title} onChange={this.handleChange} />
-                    <textarea name="intro" value={intro} onChange={this.handleChange} />
-                    <textarea name="post" value={post} onChange={this.handleChange} />
+                <form className="form" onSubmit={this.handleSubmit}>
+                    <div>
+                        <input
+                            type="text"
+                            name="picture"
+                            value={picture}
+                            onChange={this.handleChange}
+                            placeholder="Ссылка на изображение"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            name="title"
+                            value={title}
+                            onChange={this.handleChange}
+                            placeholder="Заголовок"
+                        />
+                    </div>
+                    <div>
+                        <textarea
+                            name="intro"
+                            value={intro}
+                            onChange={this.handleChange}
+                            placeholder="Вступление"
+                        />
+                    </div>
+                    <div>
+                        <textarea
+                            name="post"
+                            value={post}
+                            onChange={this.handleChange}
+                            placeholder="Основная часть"
+                        />
+                    </div>
                     <button type="submit">{ !!itemId ? 'Обновить' : 'Создать'}</button>
                 </form>
             );

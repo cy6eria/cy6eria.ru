@@ -106,9 +106,7 @@ app.post('/api/posts/new', checkAuthentication, (req, res) => {
     if (!(title || intro || post)) {
         res.status(500).send('Необходимо указать заголовок, введение и текст записи.');   
     } else {
-        const newPost = Models.Post.build({
-            title, intro, post
-        });
+        const newPost = Models.Post.build(req.body);
 
         newPost.save().then((data) => {
             res.send(data);

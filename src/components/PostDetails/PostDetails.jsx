@@ -11,7 +11,7 @@ import './PostDetails.scss';
 
 class PostDetailsView extends React.PureComponent {
     render () {
-        const { id, title, createdAt, intro, post } = this.props;
+        const { id, title, createdAt, intro, post, picture } = this.props;
 
         return (
             <article className="post_details">
@@ -22,28 +22,33 @@ class PostDetailsView extends React.PureComponent {
                     <meta property="og:description" content={intro} />
                     <meta property="og:type" content="article" />
                     <meta property="og:url" content={`https://cy6eria.ru/posts/${id}`} />
+                    <meta property="og:image" content={picture} />
                 </Helmet>
 
-                <h1>{title}</h1>
+                <header style={{ backgroundImage: `url('${picture}')` }}>
+                    <h1>{title}</h1>
 
-                <time dateTime={createdAt} className="post_details__date">
-                    {format(createdAt)}
-                </time>
+                    <time dateTime={createdAt} className="post_details__date">
+                        {format(createdAt)}
+                    </time>
+                </header>
 
-                <section>
-                    <ReactMarkdown source={intro} />
-                </section>
+                <div className="post_details__content">
+                    <section>
+                        <ReactMarkdown source={intro} />
+                    </section>
 
-                <ReactMarkdown source={post} />
+                    <ReactMarkdown source={post} />
+                </div>
             </article>
         );
     }
 }
 
 const mapStateToProps = ({ posts }) => {
-    const { id, title, createdAt, intro, post } = posts.postDetails;
+    const { id, title, createdAt, intro, post, picture } = posts.postDetails;
     
-    return { title, createdAt, intro, post, id };
+    return { title, createdAt, intro, post, id, picture };
 };
 
 const mapDispatchToProps = (dispatch) => ({});
