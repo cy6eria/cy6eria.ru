@@ -1,10 +1,30 @@
 .post_details {
     padding: 2rem 4rem 4rem;
 
+    &__back_link {
+        display: block;
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        line-height: 2.5rem;
+        font-size: 1.5rem;
+        color: black;
+        text-decoration: none;
+
+        svg polygon {
+            fill: black;
+        }
+
+        svg, span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
     header {
         margin: -2rem -4rem 4rem;
         padding: 24rem 4rem 2rem;
-        color: #fff;
+        color: white;
         background-position: center;
 
         h1 {
@@ -32,6 +52,20 @@
     &__content {
         max-width: 800px;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 1199px) {
+    .post_details {
+        &__back_link {
+            left: 1rem;
+            bottom: 1rem;
+            font-size: 1rem;
+
+            span {
+                display: none;
+            }
+        }
     }
 }
 

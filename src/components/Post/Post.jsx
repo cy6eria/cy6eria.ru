@@ -13,19 +13,19 @@ export class Post extends React.PureComponent {
 
         return (
             <article className="post">
-                <header className="post__header">
-                    <Link href={`/posts/${id}`}>
+                <Link href={`/posts/${id}`}>
+                    <header className="post__header">
                         <h3>{title}</h3>
-                    </Link>
-                </header>
+                    </header>
 
-                <time dateTime={createdAt} className="post__date">
-                    {format(createdAt)}
-                </time>
-                
-                <ReactMarkdown source={intro} />
+                    <time dateTime={createdAt} className="post__date">
+                        {format(createdAt)}
+                    </time>
+                    
+                    <ReactMarkdown source={intro} />
 
-                <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
+                    <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
+                </Link>
             </article>
         );
     }
