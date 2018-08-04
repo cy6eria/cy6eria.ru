@@ -1,13 +1,35 @@
 .posts {
     padding: 2rem 4rem 4rem;
 
-    & > article:not(:last-child) {
-        margin-bottom: 2rem;
+    & > article {
+        max-width: 800px;
+        margin: 0 auto;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
     }
 }
 
 @media (max-width: 767px) {
     .posts {
+        padding: 2rem 4rem;
+    }
+
+    .post_details {
         padding: 2rem 1rem;
+
+        header {
+            margin: -2rem -1rem 2rem;
+            padding: 14rem 1rem 2rem;
+    
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        &__date {
+            margin-bottom: 0;
+        }
     }
 }

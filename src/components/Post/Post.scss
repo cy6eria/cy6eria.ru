@@ -1,7 +1,19 @@
 .post {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid #ddd;
+    }
+
     a {
         text-decoration: none;
         color: #000;
+    }
+
+    &__preview {
+        width: 100%;
+        margin-top: 2rem;
     }
 
     &__header {
@@ -13,8 +25,8 @@
 
     &__date {
         display: block;
-        margin-bottom: 2rem;
         text-transform: capitalize;
+        margin-bottom: 2rem;
     }
 
     &__read_more {

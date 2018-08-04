@@ -9,7 +9,7 @@ import './Post.scss';
 
 export class Post extends React.PureComponent {
     render () {
-        const { id, title, intro, createdAt } = this.props;
+        const { id, picture, title, intro, createdAt } = this.props;
 
         return (
             <article className="post">
@@ -24,12 +24,8 @@ export class Post extends React.PureComponent {
                 </time>
                 
                 <ReactMarkdown source={intro} />
-                
-                <div className="post__read_more">
-                    <Link href={`/posts/${id}`}>
-                        Читать дальше →
-                    </Link>
-                </div>
+
+                <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
             </article>
         );
     }
