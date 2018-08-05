@@ -35,30 +35,3 @@ export const getPosts = (page = 1) => {
         });
     }
 }
-
-export const getPost = (postId) => {
-    return (dispatch) => {
-        if (postId) {
-            dispatch(setIsLoadingState(true));
-            dispatch({ type: LOAD_DETAILS_START });
-            
-            return request.get(`/api/posts/${postId}`).then(resp => {
-                dispatch(setIsLoadingState(false));
-                dispatch({
-                    type: LOAD_DETAILS_SUCCESS,
-                    postDetails: resp.data
-                });
-            }).catch(err => {
-                dispatch(setIsLoadingState(false));
-                dispatch({
-                    type: LOAD_DETAILS_FAILURE,
-                    error: {
-                        text: 'Во время выполения запроса произошла ошибка.'
-                    }
-                });
-            });
-        } else {
-            return Promise.reject();
-        }
-    }
-}

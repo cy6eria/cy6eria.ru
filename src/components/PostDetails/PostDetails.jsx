@@ -30,8 +30,37 @@ class PostDetailsView extends React.PureComponent {
         );
     }
 
+    renderReadMoreItems = () => {
+        const { posts, postId } = this.props;
+        const content = [];
+
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].id != postId) {
+                const { id, title, intro, picture } = posts[i];
+
+                content.push(
+                    <Link href={`/posts/${id}`} key={id}>
+                        <section>
+                            <header style={{ backgroundImage: `url(${picture})` }}>
+                                <h4>{title}</h4>
+                            </header>
+                            
+                            <ReactMarkdown source={intro} />
+                        </section>
+                    </Link>
+                );
+                
+                if (content.length === 2) {
+                    break;
+                }
+            }
+        }
+
+        return content;
+    }
+
     render () {
-        const { id, title, createdAt, intro, post, picture } = this.props;
+        const { id, title, createdAt, intro, post, picture } = this.props.postDate;
 
         return (
             <article className="post_details">
@@ -47,7 +76,10 @@ class PostDetailsView extends React.PureComponent {
                     <meta property="og:image" content={picture} />
                 </Helmet>
 
-                <header style={{ backgroundImage: `url('${picture}')` }}>
+                <header
+                    className="post_details__header"
+                    style={{ backgroundImage: `url('${picture}')` }}
+                >
                     <h1>{title}</h1>
 
                     <time dateTime={createdAt} className="post_details__date">
@@ -62,15 +94,21 @@ class PostDetailsView extends React.PureComponent {
 
                     <ReactMarkdown source={post} />
                 </div>
+
+                
+                <div className="post_details__read_more">
+                    <h3>Возможно вам будет интересно:</h3>
+                    <div className="post_details__read_more_items">{this.renderReadMoreItems()}</div>
+                </div>
             </article>
         );
     }
 }
 
-const mapStateToProps = ({ posts }) => {
-    const { id, title, createdAt, intro, post, picture } = posts.postDetails;
+const mapStateToProps = ({ posts }, props) => {
+    const postDate = posts.items.find(item => item.id == props.postId);
     
-    return { title, createdAt, intro, post, id, picture };
+    return { postDate, posts: posts.items };
 };
 
 const mapDispatchToProps = (dispatch) => ({});

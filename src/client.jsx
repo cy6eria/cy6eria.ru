@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const store = createStore(
     reducers,
-    undefined,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunkMiddleware)
 );
 const router = createRouter(store);

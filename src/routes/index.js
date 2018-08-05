@@ -4,7 +4,7 @@ import UniversalRouter from 'universal-router';
 import { Login, Posts, Form, PostDetails } from '../components';
 import { NoMatch, MainPage, AboutPage } from '../pages';
 
-import { getPosts, getPost } from '../actions/posts';
+import { getPosts } from '../actions/posts';
 
 const scrollToTop = () => {
     if (typeof(window) !== 'undefined') {
@@ -55,11 +55,15 @@ export const routes = [
                         path: '',
                         async action ({ store, params }) {
                             const postId = params.id;
-                            await store.dispatch(getPost(postId));
+                            const state = store.getState();
+
+                            if (!state.posts.items || state.posts.items.length === 0) {
+                                await store.dispatch(getPosts());
+                            }
 
                             scrollToTop();
                             
-                            return <PostDetails />;
+                            return <PostDetails postId={postId} />;
                         }
                     },
                     {
