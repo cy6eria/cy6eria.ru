@@ -9,27 +9,23 @@ import './Post.scss';
 
 export class Post extends React.PureComponent {
     render () {
-        const { id, title, intro, createdAt } = this.props;
+        const { id, picture, title, intro, createdAt } = this.props;
 
         return (
             <article className="post">
-                <header className="post__header">
-                    <Link href={`/posts/${id}`}>
+                <Link href={`/posts/${id}`}>
+                    <header className="post__header">
                         <h3>{title}</h3>
-                    </Link>
-                </header>
+                    </header>
 
-                <time dateTime={createdAt} className="post__date">
-                    {format(createdAt)}
-                </time>
-                
-                <ReactMarkdown source={intro} />
-                
-                <div className="post__read_more">
-                    <Link href={`/posts/${id}`}>
-                        Читать дальше →
-                    </Link>
-                </div>
+                    <time dateTime={createdAt} className="post__date">
+                        {format(createdAt)}
+                    </time>
+                    
+                    <ReactMarkdown source={intro} />
+
+                    <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
+                </Link>
             </article>
         );
     }

@@ -1,10 +1,30 @@
 .post_details {
     padding: 2rem 4rem 4rem;
 
-    header {
+    &__back_link {
+        display: block;
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        line-height: 2.5rem;
+        font-size: 1.5rem;
+        color: black;
+        text-decoration: none;
+
+        svg polygon {
+            fill: black;
+        }
+
+        svg, span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &__header {
         margin: -2rem -4rem 4rem;
         padding: 24rem 4rem 2rem;
-        color: #fff;
+        color: white;
         background-position: center;
 
         h1 {
@@ -29,9 +49,61 @@
         max-width: 100%;
     }
 
-    &__content {
+    &__content, &__read_more {
         max-width: 800px;
         margin: 0 auto;
+    }
+
+    &__read_more {
+        margin-top: 4rem;
+        border-top: 1px solid #ddd;
+    }
+
+    &__read_more_items {
+        & > a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            header {
+                background-size: cover;
+                background-position: center;
+                padding: 15rem 2rem 2rem;
+
+                & + div {
+                    border: 1px solid #ddd;
+                    border-top: none;
+                    padding: 2rem 2rem 0;
+                }
+            }
+
+            h4 {
+                margin: 0;
+                color: white;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .post_details {
+        &__back_link {
+            left: 1rem;
+            bottom: 1rem;
+            font-size: 1rem;
+
+            span {
+                display: none;
+            }
+        }
     }
 }
 
@@ -39,7 +111,7 @@
     .post_details {
         padding: 2rem 1rem;
 
-        header {
+        &__header {
             margin: -2rem -1rem 2rem;
             padding: 14rem 1rem 2rem;
     
@@ -48,8 +120,32 @@
             }
         }
 
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        code {
+            white-space: normal;
+        }
+
         &__date {
             margin-bottom: 0;
+        }
+
+        &__back_link {
+            display: none;
+        }
+
+        &__read_more_items > a header {
+            padding: 10rem 1rem 1rem;
+
+            & + div {
+                padding: 1rem 1rem 0;
+            }
+
+            h4 {
+                font-size: 1.5rem;
+            }
         }
     }
 }

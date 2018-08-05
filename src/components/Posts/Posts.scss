@@ -1,13 +1,22 @@
 .posts {
     padding: 2rem 4rem 4rem;
 
-    & > article:not(:last-child) {
-        margin-bottom: 2rem;
+    & > article {
+        max-width: 800px;
+        margin: 0 auto;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
     }
 }
 
 @media (max-width: 767px) {
     .posts {
         padding: 2rem 1rem;
+
+        h3 {
+            font-size: 2rem;
+        }
     }
 }

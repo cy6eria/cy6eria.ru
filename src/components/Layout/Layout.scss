@@ -9,18 +9,18 @@ div {
     font-weight: 400;
 }
 
-html, body, #app {
+html, body {
     width: 100%;
-    overflow: hidden;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
 
     font-size: 14px;
 }
 
-#app {
-    overflow: auto; 
+html {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3, h4, h5, h6 {
