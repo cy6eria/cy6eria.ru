@@ -6,17 +6,25 @@ import { NoMatch, MainPage, AboutPage } from '../pages';
 
 import { getPosts, getPost } from '../actions/posts';
 
+const scrollToTop = () => {
+    if (typeof(window) !== 'undefined') {
+        window.scrollTo(0,0);
+    }
+}
+
 export const routes = [
     {
         path: '',
         action: () => {
-            return (<MainPage />);
+            scrollToTop();
+            return <MainPage />;
         }
     },
     {
         path: '/about',
         action: () => {
-            return (<AboutPage />);
+            scrollToTop();
+            return <AboutPage />;
         }
     },
     {
@@ -30,6 +38,9 @@ export const routes = [
                 path: '',
                 async action ({ store }) {
                     await store.dispatch(getPosts());
+
+                    scrollToTop();
+
                     return <Posts />
                 }
             },
@@ -45,6 +56,8 @@ export const routes = [
                         async action ({ store, params }) {
                             const postId = params.id;
                             await store.dispatch(getPost(postId));
+
+                            scrollToTop();
                             
                             return <PostDetails />;
                         }
