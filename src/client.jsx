@@ -1,10 +1,10 @@
-import 'babel-polyfill';
 import './style/icons.css';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import React from 'react';
 import { hydrate } from 'react-dom';
+import { Provider } from 'react-redux'
 
 import { history } from './core';
 import reducers from './reducers';
@@ -27,11 +27,12 @@ const router = createRouter(store);
 
 router.resolve({ pathname: history.location.pathname }).then(component => {
     hydrate(
-        <Layout
-            store={store}
-            router={router}
-            component={component}
-        />,
+        <Provider store={store}>
+            <Layout
+                router={router}
+                component={component}
+            />
+        </Provider>,
         document.getElementById('app')
     );
 });
