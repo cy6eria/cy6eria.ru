@@ -16,7 +16,6 @@ export const getHTML = (req, res) => {
     fs.readFile(indexPath, 'utf8', (err, data) => {
         const store = createStore(
             reducers,
-            undefined,
             applyMiddleware(thunkMiddleware)
         );
         const router = createRouter(store);
