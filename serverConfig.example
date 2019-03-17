@@ -1,3 +1,4 @@
 {
-    "secret": "cats are good"
+    "secret": "cats are good",
+    "port": 3000
 }

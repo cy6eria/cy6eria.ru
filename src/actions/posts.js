@@ -5,9 +5,6 @@ import {
     LOAD_POSTS_START,
     LOAD_POSTS_SUCCESS,
     LOAD_POSTS_FAILURE,
-    LOAD_DETAILS_START,
-    LOAD_DETAILS_SUCCESS,
-    LOAD_DETAILS_FAILURE
 } from '../actionTypes';
 
 export const getPosts = (page = 1) => {

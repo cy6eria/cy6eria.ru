@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-
-import { Link } from '../Link';
+import Link from 'next/link';
 
 import { format } from '../../core';
 
 import './Post.scss';
 
-export class Post extends React.PureComponent {
-    render () {
-        const { id, picture, title, intro, createdAt } = this.props;
+const PostView = props => {
+    const { id, picture, title, intro, createdAt } = props;
 
-        return (
-            <article className="post">
-                <Link href={`/posts/${id}`}>
+    return (
+        <article className="post">
+            <Link href={`/posts?id=${id}`} as={`/posts/${id}`} prefetch>
+                <a>
                     <header className="post__header">
                         <h3>{title}</h3>
                     </header>
@@ -25,8 +24,10 @@ export class Post extends React.PureComponent {
                     <ReactMarkdown source={intro} />
 
                     <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
-                </Link>
-            </article>
-        );
-    }
+                    </a>
+            </Link>
+        </article>
+    );
 }
+
+export const Post = React.memo(PostView);
