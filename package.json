@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "parcel watch ./src/index.html -d public --public-url /",
     "build": "next build",
-    "server": "babel-node run-server.js"
+    "server": "node run-server.js"
   },
   "author": "",
   "license": "ISC",
@@ -42,21 +42,13 @@
     "xml": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.3.4",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.5",
     "node-sass": "^4.11.0",
-    "sass": "^1.17.2",
-    "warning": "^4.0.3",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "sass": "^1.17.2"
   }
 }
