@@ -1,40 +1,46 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { Link } from '../Link';
 import { MainNavigation } from '../MainNavigation';
+import { Loader } from '../Loader';
 
 import './Sidebar.scss';
 
-export class Sidebar extends React.PureComponent {
-    static propTypes = {
-        open: PropTypes.bool.isRequired,
-        onToggle: PropTypes.func.isRequired
-    }
+/**
+ * Боковая панель.
+ */
+export const Sidebar = ({ isLoading = false }) => {
+    const [open, setOpen] = useState(false);
+    const onToggle = useCallback(() => setOpen(!open), [open]);
 
-    render () {
-        const { open, onToggle } = this.props;
+    const catcher = useCallback(e => e.stopPropagation, []);
 
-        return (
-            <div>
-                <button
-                    className={cx('trigger', { show: !open })}
-                    onClick={onToggle}
-                    aria-label={open ? 'Скрыть меню' : 'Показать меню'}
-                >
-                    <div />
-                </button>
+    return (
+        <Fragment>
+            <div
+                className={cx('overlay', { show: open || isLoading })}
+                onClick={onToggle}
+            >
+                <Loader show={isLoading} />
+            </div>
 
-                <aside 
-                    className={cx('sidebar', { open })}
-                    onClick={onToggle}
-                >
-                    <div className="content">
-                        <MainNavigation />
-                    </div>
-                </aside>
-            </div>  
-        );
-    }
+            <button
+                className={cx('trigger', { show: !open })}
+                onClick={onToggle}
+                aria-label={open ? 'Скрыть меню' : 'Показать меню'}
+            >
+                <div />
+            </button>
+
+            <aside 
+                className={cx('sidebar', { open })}
+                onClick={catcher}
+            >
+                <div className="content">
+                    <MainNavigation onToggle={onToggle} />
+                </div>
+            </aside>
+        </Fragment>  
+    );
 }

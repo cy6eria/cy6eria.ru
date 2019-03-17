@@ -1,48 +1,30 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import Head from 'next/head';
 
 import { Post } from '../Post';
 
 import './Posts.scss';
 
-class PostsView extends React.Component {
-    render () {
-        const { posts } = this.props;
+export const Posts = ({ posts }) => {
+    let view = null;
 
-        let view;
-
-        if (posts.length === 0) {
-            view = (<h1>Нечего показать.</h1>);
-        } else {
-            view = (
-                <Fragment>
-                    {posts.map(post => <Post key={post.id} {...post} />)}
-                </Fragment>
-            );
-        }
-
-        return (
-            <div className="posts">
-                <Helmet>
-                    <title>Блог - Eugene Gundorov (cy6eria)</title>
-                    <meta name="description" content="Статьи на различную тематику связанные с программированием и робототехникой." /> 
-                    <meta property="og:title" content="Блог - Eugene Gundorov (cy6eria)" />
-                    <meta property="og:description" content="Статьи на различную тематику связанные с программированием и робототехникой." />
-                    <meta property="og:type" content="article" />
-                    <meta property="og:url" content="https://cy6eria.ru/posts" />
-                </Helmet>
-                {view}
-            </div>
-        );
+    if (posts.length === 0) {
+        view = (<h1>Нечего показать.</h1>);
+    } else {
+        view = posts.map(post => <Post key={post.id} {...post} />);
     }
+
+    return (
+        <div className="posts">
+            <Head>
+                <title>Блог - Eugene Gundorov (cy6eria)</title>
+                <meta name="description" content="Статьи на различную тематику связанные с программированием и робототехникой." /> 
+                <meta property="og:title" content="Блог - Eugene Gundorov (cy6eria)" />
+                <meta property="og:description" content="Статьи на различную тематику связанные с программированием и робототехникой." />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://cy6eria.ru/posts" />
+            </Head>
+            {view}
+        </div>
+    );
 }
-
-const mapStateToProps = ({ posts }) => ({
-    posts: posts.items
-});
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch);
-
-export const Posts = connect(mapStateToProps, mapDispatchToProps)(PostsView);

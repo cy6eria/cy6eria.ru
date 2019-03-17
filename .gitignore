@@ -1,10 +1,12 @@
 node_modules
 .vscode
 .idea
+.next
 npm-debug.log
 .cache
 public
 serverConfig.json
 server.production.js
 nginx.conf
+config/config.json
 
