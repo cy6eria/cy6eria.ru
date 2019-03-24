@@ -21,6 +21,19 @@ class MyDocument extends Document {
                 <body className="custom_class">
                     <Main />
                     <NextScript />
+                    <script src="/counter.js"></script>
+                    <noscript>
+                        <div>
+                            <img
+                                src="https://mc.yandex.ru/watch/47856335"
+                                style={{
+                                    position: 'absolute',
+                                    left: '-9999px',
+                                }}
+                                alt=""
+                            />
+                        </div>
+                    </noscript>
                 </body>
             </Html>
         );
