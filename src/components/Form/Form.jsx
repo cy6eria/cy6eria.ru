@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import axios from 'axios';
+import { useDropzone } from 'react-dropzone'
+import TextareaAutosize from 'react-autosize-textarea';
+import cx from 'classnames';
 
 import './Form.scss';
+
+const Dropzone = props => {
+    const { onDrop, preview } = props;
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({onDrop})
+  
+    return (
+        <div
+            {...getRootProps()}
+            className={cx('dropzone', {
+                'dropzone--with-preview': !!preview,
+            })}
+            style={{
+                backgroundImage: preview ? `url(${preview})` : undefined,
+            }}
+        >
+            <input {...getInputProps()} />
+            {
+            isDragActive ?
+                <p>Бросьте файл сюда...</p> :
+                <p>Перетащите сюда файл или кликните для загрузки...</p>
+            }
+        </div>
+    );
+}
 
 export class Form extends React.Component {
     constructor (props) {
@@ -32,6 +59,18 @@ export class Form extends React.Component {
         }
     }
 
+    handleFileDrop = acceptedFiles => {
+        const filereader = new FileReader();
+
+        filereader.onload = e => {
+            this.setState({
+                picture: e.target.result,
+            });
+        }
+
+        filereader.readAsDataURL(acceptedFiles[0]);
+    }
+
     handleChange = (e) => {
         const key = e.target.name;
         const value = e.target.value;
@@ -42,7 +81,7 @@ export class Form extends React.Component {
     }
 
     handleSubmit = (e) => {
-        const { itemId } = this.state;
+        const { itemId, file, title, intro, post } = this.state;
         e.preventDefault();
 
         axios({
@@ -74,7 +113,11 @@ export class Form extends React.Component {
         } else {
             view = (
                 <form className="form" onSubmit={this.handleSubmit}>
-                    <div>
+                    <Dropzone
+                        onDrop={this.handleFileDrop}
+                        preview={picture}
+                    />
+                    {/* <div>
                         <input
                             type="text"
                             name="picture"
@@ -82,7 +125,7 @@ export class Form extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Ссылка на изображение"
                         />
-                    </div>
+                    </div> */}
                     <div>
                         <input
                             type="text"
@@ -93,7 +136,7 @@ export class Form extends React.Component {
                         />
                     </div>
                     <div>
-                        <textarea
+                        <TextareaAutosize
                             name="intro"
                             value={intro}
                             onChange={this.handleChange}
@@ -101,7 +144,7 @@ export class Form extends React.Component {
                         />
                     </div>
                     <div>
-                        <textarea
+                        <TextareaAutosize
                             name="post"
                             value={post}
                             onChange={this.handleChange}

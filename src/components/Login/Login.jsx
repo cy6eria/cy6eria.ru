@@ -1,55 +1,48 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-export class Login extends React.Component {
-    constructor (props) {
-        super(props);
+import './Login.scss';
 
-        this.state = {
-            username: '',
-            password: ''
-        }
-    }
+export const Login = props => {
+    const [state, setState] = useState({
+        username: '',
+        password: ''
+    });
 
-    handleChange = (e) => {
-        this.setState({
+    const { username, password } = state;
+    const { isLoggedIn, login } = props;
+
+    const handleChange = useCallback((e) => {
+        setState({
+            ...state,
             [e.target.name]: e.target.value
         });
-    }
+    }, [state]);
 
-    hadleSubmit = (e) => {
-        const { username, password } = this.state;
+    const hadleSubmit = useCallback((e) => {
         e.preventDefault();
-        this.props.login(username, password);
-    }
+        login(username, password);
+    }, [state]);
 
-    renderForm = () => {
-        const { username, password } = this.state;
-
-        return (
-            <form onSubmit={this.hadleSubmit}>
-                <div>
-                    <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <button type="submit">Войти</button>
-            </form>
-        );
-    }
-
-    render () {
-        return this.props.isLoggedIn ? <div>Вы вошли!</div> : this.renderForm();
-    }
+    return isLoggedIn ? <div>Вы вошли!</div> : (
+        <form className="login" onSubmit={hadleSubmit}>
+            <div className="login__row">
+                <input
+                    type="text"
+                    name="username"
+                    value={username}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="login__row">
+                <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                />
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+    );
 }

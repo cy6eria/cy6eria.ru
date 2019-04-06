@@ -8,4 +8,9 @@ serverConfig.json
 server.production.js
 nginx.conf
 config/config.json
+sessions
 
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

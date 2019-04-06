@@ -1,13 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const uuid = require('uuid/v4');
 const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const Sequelize = require('sequelize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const next = require('next');
+const cloudinary = require('cloudinary').v2;
 
 const config = require('./serverConfig');
+
+cloudinary.config({ 
+    cloud_name: config.cloudName, 
+    api_key: config.cloudAPIKey, 
+    api_secret: config.cloudAPISecret, 
+});
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -60,8 +69,10 @@ app.prepare().then(() => {
     }));
     server.use(cookieParser());
     server.use(session({
+        genid: (req) => uuid(),
+        store: new FileStore(),
         secret: config.secret,
-        resave: true,
+        resave: false,
         saveUninitialized: true
     }));
     server.use(bodyParser.urlencoded({ extended: true }));
@@ -107,17 +118,28 @@ app.prepare().then(() => {
     });
     
     server.post('/api/posts/new', checkAuthentication, (req, res) => {
-        const { title, intro, post } = req.body;
+        const { picture, title, intro, post } = req.body;
     
         if (!(title || intro || post)) {
             res.status(500).send('Необходимо указать заголовок, введение и текст записи.');   
         } else {
-            const newPost = Models.Post.build(req.body);
+            cloudinary.uploader.upload(picture, (error, result) => {
+                if (error) {
+                    res.status(500).send('Во время загрузки изображения произошла ошибка.');       
+                } else {
+                    const newPost = Models.Post.build({
+                        picture: result.url,
+                        title,
+                        intro,
+                        post,    
+                    });
     
-            newPost.save().then((data) => {
-                res.send(data);
-            }).catch((err) => {
-                res.status(500).send(err);
+                    newPost.save().then((data) => {
+                        res.send(data);
+                    }).catch((err) => {
+                        res.status(500).send(err);
+                    });
+                }
             });
         }
     });
