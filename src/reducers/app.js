@@ -17,7 +17,6 @@ export const app = (state = initialState, action) => {
             break;
         }
         case LOGIN_SUCCESS: {
-            console.log(action)
             nextState = {
                 ...state,
                 isLoading: false,

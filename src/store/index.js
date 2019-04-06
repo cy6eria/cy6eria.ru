@@ -3,11 +3,8 @@ import thunkMiddleware from 'redux-thunk'
 
 import reducers from '../reducers';
 
-export const getStore = (initialState = {}) => {
-    console.log('Creating store...');
-    return createStore(
-        reducers,
-        initialState,
-        applyMiddleware(thunkMiddleware),
-    );
-}
+export const getStore = (initialState = {}) => createStore(
+    reducers,
+    initialState,
+    applyMiddleware(thunkMiddleware),
+);
