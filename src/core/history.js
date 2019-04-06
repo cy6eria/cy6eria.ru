@@ -1,3 +1,3 @@
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
-export const history = typeof(window) !== 'undefined' ? createHistory() : {};
+export const history = typeof(window) !== 'undefined' ? createBrowserHistory() : {};
