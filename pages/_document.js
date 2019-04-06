@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
@@ -7,7 +7,26 @@ class MyDocument extends Document {
         return { ...initialProps }
     }
 
+    renderCounter = () => (
+        <Fragment>
+            <script src="/counter.js"></script>
+            <noscript>
+                <div>
+                    <img
+                        src="https://mc.yandex.ru/watch/47856335"
+                        style={{
+                            position: 'absolute',
+                            left: '-9999px',
+                        }}
+                        alt=""
+                    />
+                </div>
+            </noscript>
+        </Fragment>
+    )
+
     render () {
+        const isDev = process.env.NODE_ENV === 'development';
         return (
             <Html>
                 <Head>
@@ -21,19 +40,7 @@ class MyDocument extends Document {
                 <body className="custom_class">
                     <Main />
                     <NextScript />
-                    <script src="/counter.js"></script>
-                    <noscript>
-                        <div>
-                            <img
-                                src="https://mc.yandex.ru/watch/47856335"
-                                style={{
-                                    position: 'absolute',
-                                    left: '-9999px',
-                                }}
-                                alt=""
-                            />
-                        </div>
-                    </noscript>
+                    { isDev ? null : this.renderCounter()}
                 </body>
             </Html>
         );
