@@ -11,36 +11,36 @@ import './Sidebar.scss';
  * Боковая панель.
  */
 export const Sidebar = ({ isLoading = false }) => {
-    const [open, setOpen] = useState(false);
-    const onToggle = useCallback(() => setOpen(!open), [open]);
+  const [open, setOpen] = useState(false);
+  const onToggle = useCallback(() => setOpen(!open), [open]);
 
-    const catcher = useCallback(e => e.stopPropagation, []);
+  const catcher = useCallback(e => e.stopPropagation, []);
 
-    return (
-        <Fragment>
-            <div
-                className={cx('overlay', { show: open || isLoading })}
-                onClick={onToggle}
-            >
-                <Loader show={isLoading} />
-            </div>
+  return (
+    <Fragment>
+      <div
+        className={cx('overlay', { show: open || isLoading })}
+        onClick={onToggle}
+      >
+        <Loader show={isLoading} />
+      </div>
 
-            <button
-                className={cx('trigger', { show: !open })}
-                onClick={onToggle}
-                aria-label={open ? 'Скрыть меню' : 'Показать меню'}
-            >
-                <div />
-            </button>
+      <button
+        className={cx('trigger', { show: !open })}
+        onClick={onToggle}
+        aria-label={open ? 'Скрыть меню' : 'Показать меню'}
+      >
+        <div />
+      </button>
 
-            <aside 
-                className={cx('sidebar', { open })}
-                onClick={catcher}
-            >
-                <div className="content">
-                    <MainNavigation onToggle={onToggle} />
-                </div>
-            </aside>
-        </Fragment>  
-    );
+      <aside
+        className={cx('sidebar', { open })}
+        onClick={catcher}
+      >
+        <div className="content">
+          <MainNavigation onToggle={onToggle} />
+        </div>
+      </aside>
+    </Fragment>
+  );
 }
