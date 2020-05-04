@@ -1,7 +1,12 @@
 {
-    "secret": "cats are good",
-    "port": 3000,
-    "cloudName": "ololo",
-    "cloudAPIKey": "111",
-    "cloudAPISecret": "trololo"
+  "secret": "cats are good",
+  "port": 3000,
+  "cloudName": "ololo",
+  "cloudAPIKey": "111",
+  "cloudAPISecret": "trololo",
+  "dbuser": "admin",
+  "dbpassword": "password",
+  "dbhost": "localhost",
+  "dbport": 32770,
+  "dbname": "blog",
 }
