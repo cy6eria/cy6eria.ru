@@ -1,155 +1,138 @@
 @keyframes fade-out {
-    from {
-        background-color: rgba(#000, 1);
-    }
-    to {
-        background-color: rgba(#000, .1);
-    }
+  from {
+    background-color: rgba(#000, 1);
+  }
+  to {
+    background-color: rgba(#000, 0);
+  }
 }
-
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes from-right {
-    0% {
-        transform: translateX(-15rem);
-    }
-    70% {
-        transform: translateX(3rem);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes from-left {
-    0% {
-        transform: translateX(-50rem);
-    }
-    70% {
-        transform: translateX(7rem);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.main_page {
-    height: 100%;
-    background-color: #000;
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
+  }
+}
 
-    .image, .content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+.splash {
+  height: 100%;
+  background-color: #000;
+  opacity: 1;
+  position: relative;
+
+  .image, .content {
+    height: 100vh;
+  }
+
+  .image {
+    background-image: url('https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_1600/v1588699467/IMG_1683.jpg');
+    background-position: 30% 50%;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .content {
+    padding: 4rem;
+    display: block;
+    color: #fff;
+    background-color: #000;
+    animation-duration: 1s;
+    animation-name: fade-out;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+
+    .name {
+      font-family: Pacifico;
+      font-weight: 400;
+      font-size: 5rem;
+      line-height: 5rem;
+      margin: 0 0 1rem;
+      position: relative;
+      opacity: 0;
+      display: inline-block;
+      animation-duration: .5s;
+      animation-name: fade-in;
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
     }
 
+    .subheader {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 100;
+      opacity: 0;
+      animation-duration: .5s;
+      animation-name: fade-in;
+      animation-fill-mode: forwards;
+      animation-delay: 1.5s;
+    }
+  }
+
+  &__social_buttons {
+    opacity: 0;
+    position: absolute;
+    bottom: 2rem;
+    animation-duration: .5s;
+    animation-name: fade-in;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+
+    a span:before {
+      color: #fff;
+    }
+  }
+
+  @media (max-width: 1023px) {
     .image {
-        background-image: url('http://res.cloudinary.com/cy6eria/image/upload/c_scale,w_2445/v1520800212/background.jpg');
-        background-position: 30% 50%;
-        background-size: cover;
-        height: 100%;
+      background-position: center;
+      background-image: url('https://res.cloudinary.com/cy6eria/image/upload/w_1024,ar_1:1,c_fill/v1588699467/IMG_1683.jpg');
+    }
+  }
+  
+  @media (max-width: 639px) {
+    .image {
+      background-position: center;
     }
 
     .content {
-        padding: 4rem;
-        display: block;
-        color: #fff;
-        background-color: #000;
-        animation-duration: 1s;
-        animation-name: fade-out;
-        animation-delay: .5s;
-        animation-fill-mode: forwards;
+      padding: 2rem;
 
-        h1, h2 {
-            margin: 0;
-        }
+      .name {
+        font-size: 3rem;
+        line-height: 3rem;
+      }
 
-        h1 {
-            font-size: 5rem;
-            line-height: 5rem;
-            margin: 0 0 1rem;
-            position: relative;
-            transform: translateX(-50rem);
-            display: inline-block;
+      .subheader {
+        font-size: 2rem;
+      }
+    }   
+  }
+}
 
-            animation-duration: .5s;
-            animation-name: from-left;
-            animation-delay: 1.5s;
-            animation-fill-mode: forwards;
-        }
+.about {
+  padding: 2rem 0;
+  background: #fff;
 
-        h2 {
-            font-size: 3rem;
+  p {
+    font-size: 1.5rem;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+    max-width: 800px;
+  }
 
-            span {
-                opacity: 0;
-                animation-duration: .5s;
-                animation-name: fade-in;
-                animation-fill-mode: forwards;
+  figure {
+    display: block;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+  }
 
-                &:nth-child(1) {
-                    animation-delay: 2s;
-                }
+  figcaption {
+    margin: 1rem 0 1.5rem;
+  }
 
-                &:nth-child(2) {
-                    animation-delay: 2.5s;
-                }
-
-                &:nth-child(3) {
-                    animation-delay: 3s;
-                }
-            }
-        }
-    }
-
-    &__social_buttons {
-        opacity: 0;
-        position: absolute;
-        bottom: 2rem;
-        animation-duration: .5s;
-        animation-name: fade-in;
-        animation-delay: 3.5s;
-        animation-fill-mode: forwards;
-
-        a span:before {
-            color: #fff;
-        }
-    }
-
-    @media (max-width: 1023px) {
-        .image {
-            background-image: url('http://res.cloudinary.com/cy6eria/image/upload/c_scale,w_1008/v1520800212/background.jpg');
-        }
-    }
-    
-
-    @media (max-width: 639px) {
-        .content {
-            padding: 2rem;
-
-            h1 {
-                font-size: 3rem;
-                line-height: 3rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-
-                span {
-                    display: block;
-                }
-            }
-        }   
-    }
+  img {
+    max-width: 100%;
+  }
 }

@@ -20,7 +20,7 @@ class MyDocument extends Document {
           <link rel="shortcut icon" href="/favicon/favicon.ico" />
           <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
           <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto|Pacifico:400" />
         </Head>
         <body className="custom_class">
           <Main />
