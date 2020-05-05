@@ -1,5 +1,4 @@
-import React, { Fragment, useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 
 import { MainNavigation } from '../MainNavigation';
@@ -17,7 +16,7 @@ export const Sidebar = ({ isLoading = false }) => {
   const catcher = useCallback(e => e.stopPropagation, []);
 
   return (
-    <Fragment>
+    <>
       <div
         className={cx('overlay', { show: open || isLoading })}
         onClick={onToggle}
@@ -41,6 +40,6 @@ export const Sidebar = ({ isLoading = false }) => {
           <MainNavigation onToggle={onToggle} />
         </div>
       </aside>
-    </Fragment>
+    </>
   );
 }
