@@ -13,7 +13,7 @@ export const Posts = (props) => {
   if (posts.length === 0) {
     view = (<h1>Нечего показать.</h1>);
   } else {
-    view = posts.map(post => <Post key={post.id} {...post} />);
+    view = posts.map(post => <Post key={post._id} {...post} />);
   }
 
   return (
