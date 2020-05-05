@@ -1,3 +1,0 @@
-export const LOAD_POSTS_START = 'posts/LOAD_POSTS_START';
-export const LOAD_POSTS_SUCCESS = 'posts/LOAD_POSTS_SUCCESS';
-export const LOAD_POSTS_FAILURE = 'posts/LOAD_POSTS_FAILURE';
