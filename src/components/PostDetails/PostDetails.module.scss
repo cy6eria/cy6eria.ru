@@ -22,17 +22,18 @@
     }
 
     &__header {
-        margin: -2rem -4rem 4rem;
-        padding: 24rem 4rem 2rem;
-        color: white;
-        background-position: center;
-        background-size: cover;
+      margin: -2rem -4rem 4rem;
+      padding: 24rem 4rem 2rem;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      position: relative;
 
-        h1 {
-            max-width: 800px;
-            font-size: 3rem;
-            margin: 0 auto .5rem;
-        }
+      h1 {
+        max-width: 800px;
+        font-size: 3rem;
+        margin: 0 auto .5rem;
+      }
     }
 
     &__date {
@@ -92,6 +93,14 @@
             }
         }
     }
+}
+
+.post_details__nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 @media (max-width: 1199px) {

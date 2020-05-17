@@ -2,14 +2,13 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { format } from '../../core';
-
-import './PostDetails.scss';
+import { Navbar } from '../Navbar';
+import styles from './PostDetails.module.scss';
 
 const BackLink = React.memo(() => (
   <Link href="/posts">
-    <a className="post_details__back_link">
+    <a className={styles.post_details__back_link}>
       <svg
         width="32px"
         height="32px"
@@ -64,7 +63,7 @@ export const PostDetails = props => {
   const { _id, title, createdAt, intro, post, picture } = postDate;
 
   return (
-    <article className="post_details">
+    <article className={styles.post_details}>
       <BackLink />
 
       <Head>
@@ -78,17 +77,18 @@ export const PostDetails = props => {
       </Head>
 
       <header
-        className="post_details__header"
+        className={styles.post_details__header}
         style={{ backgroundImage: `url('${picture}')` }}
       >
+        <Navbar className={styles.post_details__nav} />
         <h1>{title}</h1>
 
-        <time dateTime={createdAt} className="post_details__date">
+        <time dateTime={createdAt} className={styles.post_details__date}>
           {format(createdAt)}
         </time>
       </header>
 
-      <div className="post_details__content">
+      <div className={styles.post_details__content}>
         <section>
           <ReactMarkdown source={intro} />
         </section>
@@ -97,9 +97,9 @@ export const PostDetails = props => {
       </div>
 
 
-      <div className="post_details__read_more">
+      <div className={styles.post_details__read_more}>
         <h3>Возможно вам будет интересно:</h3>
-        <div className="post_details__read_more_items">
+        <div className={styles.post_details__read_more_items}>
           <ReadMoreItems posts={posts} postId={postId} />
         </div>
       </div>

@@ -1,8 +1,8 @@
 import React, { FC, useMemo } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-import { Social } from '../../components';
-import './MainPage.scss';
+import { Social } from '../Social';
+import { MainNavigation } from '../MainNavigation';
+import styles from './MainPage.module.scss';
 
 interface IProps {
   acceptLanguage: string;
@@ -21,7 +21,7 @@ export const MainPage: FC<IProps> = props => {
         },
         about: (
           <>
-            <p>...также никому не известный как <strong>cy6eria</strong> (но я работаю над этим). Я живу в России, городе Казани. Я увлекаюсь программированием, робототехникой, IoT, фотографией, музыкой, а так же люблю путешествовать.</p>,
+            <p>...также никому не известный как <strong>cy6eria</strong> (но я работаю над этим). Я живу в России, городе Казани. Я увлекаюсь программированием, робототехникой, IoT, фотографией, музыкой, а так же люблю путешествовать.</p>
             <p><a href="/posts">В моем блоге</a> я рассказываю про свой опыт, про проблемы с которыми я сталкивался, и как удалось их решить. Если у вас есть вопросы, или вы хотите что-то обсудить, то ищите меня в социальных сетях. Мои профили вы можете найти на главной странице выше.</p>
           </>
         ),
@@ -40,7 +40,7 @@ export const MainPage: FC<IProps> = props => {
       },
       about: (
         <>
-          <p>...also, no one knows me as <strong>cy6eria</strong> (but I'm working on it). I live in Russia, Kazan, work as a front-end developer. I'm interested in programming, robotics, IoT, photography, music, and also love to travel.</p>,
+          <p>...also, no one knows me as <strong>cy6eria</strong> (but I'm working on it). I live in Russia, Kazan, work as a front-end developer. I'm interested in programming, robotics, IoT, photography, music, and also love to travel.</p>
           <p><a href="/posts">Check my blog!</a> There is I tell about my expirience, which problems I've faced, and how I've solved them. If You want to know more about something, or if You have another opinion, find me in the social networks! All my profiles you can find above.</p>
         </>
       ),
@@ -53,7 +53,7 @@ export const MainPage: FC<IProps> = props => {
 
   return (
     <>
-      <section className="splash">
+      <section className={styles.splash}>
         <Head>
           <title>Главная - Eugene Gundorov (cy6eria)</title>
           <meta name="description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." />
@@ -64,29 +64,28 @@ export const MainPage: FC<IProps> = props => {
           <meta property="og:image" content="http://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg" />
         </Head>
 
-        <div className="splash__image" role="img" aria-label={localization.header.imageDescription}>
-          <div className="splash__content">
-            <nav className="splash__nav">
-              <ul>
-                <li><Link href="/"><a>Главная</a></Link></li>
-                <li><Link href="/posts"><a>Блог</a></Link></li>
-              </ul>
-            </nav>
+        <div
+          className={styles.splash__image}
+          role="img"
+          aria-label={localization.header.imageDescription}
+        >
+          <div className={styles.splash__content}>
+            <MainNavigation className={styles.splash__nav} />
 
-            <h1 className="splash__header">
-              <span className="subheader">
+            <h1 className={styles.splash__header}>
+              <span className={styles.subheader}>
                 {localization.header.subheader}
               </span>
-              <span className="name" role="heading">
+              <span className={styles.name} role="heading">
                 {localization.header.name}
               </span>
             </h1>
           </div>
 
-          <Social className="splash__social_buttons" />
+          <Social className={styles.splash__social_buttons} />
 
           <svg
-            className="splash__call_to_scroll"
+            className={styles.splash__call_to_scroll}
             xmlns="http://www.w3.org/2000/svg"
             width="50"
             height="50"
@@ -100,7 +99,7 @@ export const MainPage: FC<IProps> = props => {
           </svg>
         </div>
       </section>
-      <section className="about">
+      <section className={styles.about}>
         {localization.about}
         
         <figure>

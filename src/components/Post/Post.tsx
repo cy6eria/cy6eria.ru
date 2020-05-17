@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
-
 import { format } from '../../core';
+import style from './Post.module.scss';
 
-import './Post.scss';
+interface IProps {
+  _id: string;
+  picture: string;
+  title: string;
+  intro: string;
+  createdAt: string;
+}
 
-const PostView = props => {
+export const Post: FC<IProps> = React.memo((props) => {
   const { _id, picture, title, intro, createdAt } = props;
 
   return (
-    <article className="post">
+    <article className={style.post}>
       <Link href="/posts/[id]" as={`/posts/${_id}`}>
         <a>
-          <header className="post__header">
-            <h3>{title}</h3>
-          </header>
+          <h3 className={style.post__header}>
+            {title}
+          </h3>
 
-          <time dateTime={createdAt} className="post__date">
+          <time dateTime={createdAt} className={style.post__date}>
             {format(createdAt)}
           </time>
 
           <ReactMarkdown source={intro} />
 
-          <img className="post__preview" src={picture} alt="Абстрактная картинка на тему статьи." />
+          <img
+            className={style.post__preview}
+            src={picture}
+            alt="Абстрактная картинка на тему статьи."
+          />
         </a>
       </Link>
     </article>
   );
-}
-
-export const Post = React.memo(PostView);
+});

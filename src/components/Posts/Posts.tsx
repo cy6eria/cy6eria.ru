@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-
 import { Post } from '../Post';
-
-import './Posts.scss';
+import { Navbar } from '../Navbar';
+import style from './Posts.module.scss';
 
 export const Posts = (props) => {
   const { posts } = props;
@@ -17,7 +16,7 @@ export const Posts = (props) => {
   }
 
   return (
-    <div className="posts">
+    <>
       <Head>
         <title>Блог - Eugene Gundorov (cy6eria)</title>
         <meta name="description" content="Статьи на различную тематику связанные с программированием и робототехникой." />
@@ -26,7 +25,10 @@ export const Posts = (props) => {
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://cy6eria.ru/posts" />
       </Head>
-      {view}
-    </div>
+      <Navbar />
+      <div className={style.posts}>
+        {view}
+      </div>
+    </>
   );
 }

@@ -1,13 +1,11 @@
 import React from 'react';
-import { Layout } from '../components/Layout';
+import './style.css';
 
 const MyApp = (props) => {
   const { Component, pageProps } = props;
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Component {...pageProps} />
   );
 }
 

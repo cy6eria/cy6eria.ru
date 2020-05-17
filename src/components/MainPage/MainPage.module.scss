@@ -84,25 +84,12 @@
 
   &__nav {
     text-align: right;
+    opacity: 0;
     flex: 1;
-
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      display: inline-block;
-    }
-
-    a {
-      color: #fff;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-left: 1rem;
-      font-size: 2rem;
-    }
+    animation-duration: .5s;
+    animation-name: fade-in;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
   }
 
   &__image, &__content {
@@ -125,10 +112,6 @@
     animation-name: fade-in;
     animation-delay: 2.5s;
     animation-fill-mode: forwards;
-
-    a span:before {
-      color: #fff;
-    }
   }
 
   &__call_to_scroll {
@@ -220,5 +203,17 @@
 
   img {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .about {
+    padding: 1rem 0;
+  }
+
+  .about p {
+    font-size: 1rem;
+    padding: 0 1rem;
+    margin: 0 auto 1rem;
   }
 }

@@ -1,8 +1,0 @@
-const withSass = require('@zeit/next-sass');
-
-module.exports = {
-  ...withSass(),
-  env: {
-    port: 3000
-  },
-};

@@ -1,0 +1,17 @@
+.MainNavigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.MainNavigation li {
+  display: inline-block;
+}
+
+.MainNavigation a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
