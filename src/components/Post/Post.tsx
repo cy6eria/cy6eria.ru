@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { format } from '../../core';
-import style from './Post.module.scss';
+import style from './Post.module.css';
 
 interface IProps {
   _id: string;
@@ -19,21 +19,17 @@ export const Post: FC<IProps> = React.memo((props) => {
     <article className={style.post}>
       <Link href="/posts/[id]" as={`/posts/${_id}`}>
         <a>
-          <h3 className={style.post__header}>
-            {title}
-          </h3>
-
-          <time dateTime={createdAt} className={style.post__date}>
-            {format(createdAt)}
-          </time>
+          <header
+            className={style.post__picture}
+            style={{ backgroundImage: `url(${picture})` }}
+          >
+            <h4 className={style.post__header}>{title}</h4>
+            <time dateTime={createdAt} className={style.post__date}>
+              {format(createdAt)}
+            </time>
+          </header>
 
           <ReactMarkdown source={intro} />
-
-          <img
-            className={style.post__preview}
-            src={picture}
-            alt="Абстрактная картинка на тему статьи."
-          />
         </a>
       </Link>
     </article>
