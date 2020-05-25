@@ -24,7 +24,7 @@
   justify-content: flex-end;
 }
 
-.post__header {
+.post .post__header {
   font-size: 2rem;
   margin: 0 0 .5rem;
 }
@@ -40,7 +40,7 @@
     padding: 0 1rem 1rem;
   }
 
-  .post__header {
+  .post .post__header {
     font-size: 1.2rem;
     font-weight: 600;
   }

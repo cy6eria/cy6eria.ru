@@ -90,7 +90,11 @@ export const PostDetails = props => {
           </div>
         </>
       ) : (
-        <h1>Страница не найдена.</h1>
+        <div className={styles.post_details__not_found}>
+          <h1 className={styles.post_details__404}>404</h1>
+          <h3>Эта страница не найдена.</h3>
+          <p>Но тут еще есть много других!</p>
+        </div>
       )}
 
       <div className={styles.post_details__read_more}>
