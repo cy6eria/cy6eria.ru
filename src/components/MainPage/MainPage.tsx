@@ -61,7 +61,7 @@ export const MainPage: FC<IProps> = props => {
           <meta property="og:description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." />
           <meta property="og:type" content="article" />
           <meta property="og:url" content="https://cy6eria.ru/about" />
-          <meta property="og:image" content="http://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg" />
+          <meta property="og:image" content="https://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg" />
         </Head>
 
         <div
@@ -104,7 +104,7 @@ export const MainPage: FC<IProps> = props => {
         
         <figure>
           <img
-            src="http://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg"
+            src="https://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg"
             alt={localization.image.alt}
           />
           <figcaption>{localization.image.caption}</figcaption>
