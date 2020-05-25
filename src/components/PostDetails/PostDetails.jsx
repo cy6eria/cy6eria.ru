@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { format } from '../../core';
 import { Navbar } from '../Navbar';
+import { Post } from '../Post';
 import styles from './PostDetails.module.scss';
 
 const BackLink = React.memo(() => (
@@ -35,17 +36,7 @@ const ReadMoreItems = props => {
       const { _id, title, intro, picture } = posts[i];
 
       content.push(
-        <Link href="/posts/[id]" as={`/posts/${_id}`} key={_id}>
-          <a>
-            <section>
-              <header style={{ backgroundImage: `url(${picture})` }}>
-                <h4>{title}</h4>
-              </header>
-
-              <ReactMarkdown source={intro} />
-            </section>
-          </a>
-        </Link>
+        <Post {...posts[i]} />
       );
 
       if (content.length === 2) {
@@ -60,42 +51,47 @@ const ReadMoreItems = props => {
 export const PostDetails = props => {
   const { posts, postId } = props;
   const postDate = posts.find(item => item._id == props.postId);
-  const { _id, title, createdAt, intro, post, picture } = postDate;
 
   return (
     <article className={styles.post_details}>
       <BackLink />
 
-      <Head>
-        <title>{title} - Eugene Gundorov (cy6eria)</title>
-        <meta name="description" content={intro} />
-        <meta property="og:title" content={`${title} - Eugene Gundorov (cy6eria)`} />
-        <meta property="og:description" content={intro} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://cy6eria.ru/posts/${_id}`} />
-        <meta property="og:image" content={picture} />
-      </Head>
+      <Navbar className={styles.post_details__nav} />
 
-      <header
-        className={styles.post_details__header}
-        style={{ backgroundImage: `url('${picture}')` }}
-      >
-        <Navbar className={styles.post_details__nav} />
-        <h1>{title}</h1>
+      {postDate ? (
+        <>
+          <Head>
+            <title>{postDate.title} - Eugene Gundorov (cy6eria)</title>
+            <meta name="description" content={postDate.intro} />
+            <meta property="og:title" content={`${postDate.title} - Eugene Gundorov (cy6eria)`} />
+            <meta property="og:description" content={postDate.intro} />
+            <meta property="og:type" content="article" />
+            <meta property="og:url" content={`https://cy6eria.ru/posts/${postDate._id}`} />
+            <meta property="og:image" content={postDate.picture} />
+          </Head>
 
-        <time dateTime={createdAt} className={styles.post_details__date}>
-          {format(createdAt)}
-        </time>
-      </header>
+          <header
+            className={styles.post_details__header}
+            style={{ backgroundImage: `url('${postDate.picture}')` }}
+          >
+            <h1>{postDate.title}</h1>
 
-      <div className={styles.post_details__content}>
-        <section>
-          <ReactMarkdown source={intro} />
-        </section>
+            <time dateTime={postDate.createdAt} className={styles.post_details__date}>
+              {format(postDate.createdAt)}
+            </time>
+          </header>
 
-        <ReactMarkdown source={post} />
-      </div>
+          <div className={styles.post_details__content}>
+            <section>
+              <ReactMarkdown source={postDate.intro} />
+            </section>
 
+            <ReactMarkdown source={postDate.post} />
+          </div>
+        </>
+      ) : (
+        <h1>Страница не найдена.</h1>
+      )}
 
       <div className={styles.post_details__read_more}>
         <h3>Возможно вам будет интересно:</h3>

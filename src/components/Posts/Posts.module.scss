@@ -2,12 +2,12 @@
   padding: 2rem 4rem 4rem;
 
   & > article {
-      max-width: 800px;
-      margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 
-      &:not(:last-child) {
-          margin-bottom: 2rem;
-      }
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
   }
 }
 
