@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { format } from '../../core';
@@ -12,7 +12,7 @@ interface IProps {
   createdAt: string;
 }
 
-export const Post: FC<IProps> = React.memo((props) => {
+export const Post = (props: IProps) => {
   const { _id, picture, title, intro, createdAt } = props;
 
   return (
@@ -28,8 +28,8 @@ export const Post: FC<IProps> = React.memo((props) => {
           </time>
         </header>
 
-        <ReactMarkdown source={intro} />
+        <ReactMarkdown>{intro}</ReactMarkdown>
       </Link>
     </article>
   );
-});
+}

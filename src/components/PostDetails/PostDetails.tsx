@@ -3,11 +3,11 @@ import ReactMarkdown from 'react-markdown';
 import Head from 'next/head';
 import Link from 'next/link';
 import { format } from '../../core';
-import { Navbar } from '../Navbar';
 import { Post } from '../Post';
+import { PostsLayout } from '../PostsLayout';
 import styles from './PostDetails.module.scss';
 
-const BackLink = React.memo(() => (
+const BackLink = () => (
   <Link href="/posts" className={styles.post_details__back_link}>
     <svg
       width="32px"
@@ -23,7 +23,7 @@ const BackLink = React.memo(() => (
 
     <span>Назад</span>
   </Link>
-));
+);
 
 interface ReducedPost {
   _id: string;
@@ -38,32 +38,18 @@ interface ExtendedPost extends ReducedPost {
 }
 
 interface PostDetailsProps {
+  isFetching: boolean;
   currentPost: ExtendedPost,
   previousPost: ReducedPost,
   nextPost: ReducedPost,
-  error?: number;
 }
 
 export const PostDetails = (props: PostDetailsProps) => {
-  const { currentPost, previousPost, nextPost, error } = props;
-
-  console.log(currentPost, error);
-
-  if (error === 500) {
-    return (
-      <div className={styles.post_details__not_found}>
-        <h1 className={styles.post_details__404}>500</h1>
-        <h3>Произошла чудовищная ошибка.</h3>
-        <p>Попробуйте перезагрузить страницу.</p>
-      </div>
-    );
-  }
+  const { isFetching, currentPost, previousPost, nextPost } = props;
 
   return (
-    <article className={styles.post_details}>
+    <PostsLayout isFetching={isFetching}>
       <BackLink />
-
-      <Navbar className={styles.post_details__nav} />
 
       {currentPost && (
         <>
@@ -90,10 +76,10 @@ export const PostDetails = (props: PostDetailsProps) => {
 
           <div className={styles.post_details__content}>
             <section>
-              <ReactMarkdown source={currentPost.intro} />
+              <ReactMarkdown>{currentPost.intro}</ReactMarkdown>
             </section>
 
-            <ReactMarkdown source={currentPost.post} />
+            <ReactMarkdown>{currentPost.post}</ReactMarkdown>
           </div>
         </>
       )}
@@ -107,6 +93,6 @@ export const PostDetails = (props: PostDetailsProps) => {
           </div>
         </div>
       )}
-    </article>
+    </PostsLayout>
   );
 }

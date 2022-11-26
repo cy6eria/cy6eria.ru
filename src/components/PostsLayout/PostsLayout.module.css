@@ -1,0 +1,16 @@
+.layout {
+  padding: 2rem 4rem 4rem;
+  position: relative;
+  transition: 0.3s easy opacity;
+}
+
+.layout--fetching {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@media (max-width: 767px) {
+  .layout {
+    padding: 2rem 1rem;
+  }
+}
