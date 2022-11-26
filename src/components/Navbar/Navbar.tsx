@@ -1,18 +1,19 @@
-import React, { FC } from 'react';
+import React from 'react';
+import Image from 'next/image';
 import cx from 'classnames';
 import { MainNavigation } from '../MainNavigation';
 import styles from './Navbar.module.css';
 
-interface IProps {
+interface NavbarProps {
   className?: string;
 }
 
-export const Navbar: FC<IProps> = React.memo((props) => {
+export const Navbar = (props: NavbarProps) => {
   const { className } = props;
   return (
     <div className={cx(styles.Navbar, className)}>
       <div className={styles.Navbar__author}>
-        <img
+        <Image
           className={styles.Navbar__avatar}
           src="https://res.cloudinary.com/cy6eria/image/upload/ar_1:1,bo_1px_solid_rgb:ffffff,c_fill,g_face,r_max,w_100,x_0,z_0.1/a_0/v1588699467/IMG_1683.jpg"
           alt="Парень в очках"
@@ -25,4 +26,4 @@ export const Navbar: FC<IProps> = React.memo((props) => {
       <MainNavigation className={styles.Navbar__nav} />
     </div>
   );
-});
+}

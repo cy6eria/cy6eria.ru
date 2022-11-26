@@ -1,4 +1,5 @@
 export * from './Posts';
 export * from './PostDetails';
-export * from './Layout';
+export * from './PostsLayout';
 export * from './Social';
+export * from './ErrorPageContent';

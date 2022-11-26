@@ -49,6 +49,10 @@ pre {
   padding: 2rem;
   margin-bottom: 1.5rem;
 }
+
+code {
+  white-space: pre-wrap;
+}
   
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */

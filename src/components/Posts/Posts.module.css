@@ -1,0 +1,12 @@
+.posts > article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.posts:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.pagination {
+  padding-top: 4rem;
+}

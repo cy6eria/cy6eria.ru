@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { getFromDatabase } from '../_getFromDatabase';
+import { getFromDatabase } from '@core';
 import { PostDetails } from '../../components/PostDetails';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -95,14 +95,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       }
     }
 
-    return {
-      props: {
-        currentPost: null,
-        previousPost: null,
-        nextPost: null,
-        error: err.response.status,
-      },
-    }
+    throw err;
   }
 }
 

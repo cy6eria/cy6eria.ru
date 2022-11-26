@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import Link from 'next/link';
 
 import styles from './MainNavigation.module.css';
 
-interface IProps {
+interface MainNavigationProps {
   className?: string;
 }
 
-export const MainNavigation: FC<IProps> = React.memo((props) => {
+export const MainNavigation = (props: MainNavigationProps) => {
   const { className } = props;
   return (
     <nav className={cx(styles.MainNavigation, className)}>
@@ -18,4 +18,4 @@ export const MainNavigation: FC<IProps> = React.memo((props) => {
       </ul>
     </nav>
   );
-});
+}
