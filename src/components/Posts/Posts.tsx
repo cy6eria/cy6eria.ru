@@ -2,10 +2,30 @@ import React from 'react';
 import Head from 'next/head';
 import { Post } from '../Post';
 import { Navbar } from '../Navbar';
+import { Pagination } from '../Pagination';
 import style from './Posts.module.scss';
 
-export const Posts = (props) => {
-  const { posts } = props;
+interface PostsProps {
+  posts: Array<{
+    _id: string;
+    picture: string;
+    title: string;
+    intro: string;
+    createdAt: string;
+  }>;
+  page: number;
+  totalCount: number;
+  itemsPerPage: number;
+  error?: unknown;
+}
+
+export const Posts = (props: PostsProps) => {  
+  const { posts, page, totalCount, itemsPerPage, error } = props;
+
+  if (error) {
+    console.log(error);
+    return null;
+  }
 
   let view = null;
 
@@ -29,6 +49,11 @@ export const Posts = (props) => {
       <div className={style.posts}>
         {view}
       </div>
+      {totalCount > posts.length && (
+        <div className={style.pagination}>
+          <Pagination page={page} totalCount={totalCount} itemsPerPage={itemsPerPage} />
+        </div>
+      )}
     </>
   );
 }

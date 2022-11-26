@@ -1,22 +1,14 @@
-import { connecToDatabase } from '../_connecToDatabase';
+import { getFromDatabase } from '../../_getFromDatabase';
 
-export default (req, res) => {
-  
-  connecToDatabase().then((client) => {
-    const db = client.db(process.env.DB_NAME);
-    const collection = db.collection('posts');
+export default async (req, res) => {
+  try {
+    const { status, data} = await getFromDatabase('find');
 
-      collection.find({}).toArray((err, posts) => {
-        if (err) {
-          res.status(500).jcon({
-            message: 'Не удалось получить записи.'
-          });
-        } else {
-          res.status(200).json(posts);
-        }
-      });
-  }).catch((err) => res.status(500).json({
-    message: 'Не удалось подключиться к базе данных.',
-    err,
-  }))
+    res.status(status).send(data.documents);
+  } catch (err) {
+    res.status(500).json({
+      message: 'Не удалось подключиться к базе данных.',
+      err,
+    });
+  }
 };

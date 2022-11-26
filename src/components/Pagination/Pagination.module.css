@@ -1,0 +1,21 @@
+.Pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.Pagination__link {
+  color: black;
+  display: block;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+}
+
+.Pagination__link:hover {
+  transition: 0.5s ease transform;
+  transform: scale(1.2);
+}
+
+.Pagination__link--active {
+  font-weight: bold;
+}

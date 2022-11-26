@@ -18,19 +18,17 @@ export const Post: FC<IProps> = React.memo((props) => {
   return (
     <article className={style.post}>
       <Link href="/posts/[id]" as={`/posts/${_id}`}>
-        <a>
-          <header
-            className={style.post__picture}
-            style={{ backgroundImage: `url(${picture})` }}
-          >
-            <h4 className={style.post__header}>{title}</h4>
-            <time dateTime={createdAt} className={style.post__date}>
-              {format(createdAt)}
-            </time>
-          </header>
+        <header
+          className={style.post__picture}
+          style={{ backgroundImage: `url(${picture})` }}
+        >
+          <h4 className={style.post__header}>{title}</h4>
+          <time dateTime={createdAt} className={style.post__date}>
+            {format(createdAt)}
+          </time>
+        </header>
 
-          <ReactMarkdown source={intro} />
-        </a>
+        <ReactMarkdown source={intro} />
       </Link>
     </article>
   );

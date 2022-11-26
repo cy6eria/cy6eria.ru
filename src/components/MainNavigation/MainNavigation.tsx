@@ -13,8 +13,8 @@ export const MainNavigation: FC<IProps> = React.memo((props) => {
   return (
     <nav className={cx(styles.MainNavigation, className)}>
       <ul>
-        <li><Link href="/"><a>Главная</a></Link></li>
-        <li><Link href="/posts"><a>Блог</a></Link></li>
+        <li><Link href="/">Главная</Link></li>
+        <li><Link href="/posts">Блог</Link></li>
       </ul>
     </nav>
   );
