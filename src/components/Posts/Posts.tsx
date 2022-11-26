@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import { Post } from '../Post';
-import { Navbar } from '../Navbar';
 import { Pagination } from '../Pagination';
-import style from './Posts.module.scss';
+import { PostsLayout } from '../PostsLayout';
+import style from './Posts.module.css';
 
 interface PostsProps {
+  isFetching: boolean;
   posts: Array<{
     _id: string;
     picture: string;
@@ -16,16 +17,10 @@ interface PostsProps {
   page: number;
   totalCount: number;
   itemsPerPage: number;
-  error?: unknown;
 }
 
 export const Posts = (props: PostsProps) => {  
-  const { posts, page, totalCount, itemsPerPage, error } = props;
-
-  if (error) {
-    console.log(error);
-    return null;
-  }
+  const { isFetching, posts, page, totalCount, itemsPerPage } = props;
 
   let view = null;
 
@@ -45,15 +40,16 @@ export const Posts = (props: PostsProps) => {
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://cy6eria.ru/posts" />
       </Head>
-      <Navbar />
-      <div className={style.posts}>
-        {view}
-      </div>
-      {totalCount > posts.length && (
-        <div className={style.pagination}>
-          <Pagination page={page} totalCount={totalCount} itemsPerPage={itemsPerPage} />
-        </div>
-      )}
+
+      <PostsLayout isFetching={isFetching}>
+        <div className={style.posts}>{view}</div>
+
+        {totalCount > posts.length && (
+          <div className={style.pagination}>
+            <Pagination page={page} totalCount={totalCount} itemsPerPage={itemsPerPage} />
+          </div>
+        )}
+      </PostsLayout>
     </>
   );
 }

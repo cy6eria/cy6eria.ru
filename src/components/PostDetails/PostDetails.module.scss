@@ -1,6 +1,4 @@
 .post_details {
-    padding: 2rem 4rem 4rem;
-
     &__back_link {
         display: block;
         position: fixed;
@@ -131,8 +129,6 @@
 
 @media (max-width: 767px) {
     .post_details {
-        padding: 2rem 1rem;
-
         &__header {
             margin: -2rem -1rem 2rem;
             padding: 14rem 1rem 2rem;

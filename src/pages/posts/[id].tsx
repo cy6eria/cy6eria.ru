@@ -95,14 +95,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       }
     }
 
-    return {
-      props: {
-        currentPost: null,
-        previousPost: null,
-        nextPost: null,
-        error: err.response.status,
-      },
-    }
+    throw err;
   }
 }
 

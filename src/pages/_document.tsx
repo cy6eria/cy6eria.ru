@@ -1,8 +1,8 @@
 import React from 'react';
 import Document, {
-  Html, Head, Main, NextScript,
+  Html, Head, NextScript, Main,
 } from 'next/document';
-import { Counter } from '../components/Counter';
+import { YandexMetrika } from '../components/YandexMetrika';
 
 class MyDocument extends Document {
   static async getInitialProps (ctx) {
@@ -22,8 +22,9 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300|Pacifico:400" />
         </Head>
         <body className="custom_class">
+          <Main />
           <NextScript />
-          {isDev ? null : <Counter />}
+          {isDev ? null : <YandexMetrika />}
         </body>
       </Html>
     );
