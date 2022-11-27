@@ -1,0 +1,44 @@
+.wrap {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 2rem auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+    'icon title'
+    'gap date';
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+.wrap--align-right {
+  text-align: right;
+  grid-template-columns: auto 2rem ;
+  grid-template-areas: 
+    'title icon'
+    'date gap';
+}
+
+.header {
+  grid-area: title;
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.date {
+  grid-area: date;
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'title'
+    'date';
+  }
+
+  .icon {
+    display: none;
+  }
+}

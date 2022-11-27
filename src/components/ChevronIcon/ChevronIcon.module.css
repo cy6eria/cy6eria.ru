@@ -1,0 +1,7 @@
+.icon {
+  width: 2rem;
+}
+
+.icon--right {
+  transform: rotate(180deg);
+}

@@ -2,28 +2,11 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Head from 'next/head';
 import Link from 'next/link';
-import { format } from '../../core';
-import { Post } from '../Post';
+import { format } from '@core';
+import { ChevronIcon } from '../ChevronIcon'
 import { PostsLayout } from '../PostsLayout';
+import { MiniPost } from '../MiniPost';
 import styles from './PostDetails.module.scss';
-
-const BackLink = () => (
-  <Link href="/posts" className={styles.post_details__back_link}>
-    <svg
-      width="32px"
-      height="32px"
-      version="1.1"
-      viewBox="0 0 512 512"
-      xmlSpace="preserve"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " />
-    </svg>
-
-    <span>Назад</span>
-  </Link>
-);
 
 interface ReducedPost {
   _id: string;
@@ -49,7 +32,11 @@ export const PostDetails = (props: PostDetailsProps) => {
 
   return (
     <PostsLayout isFetching={isFetching}>
-      <BackLink />
+      <Link href="/posts" className={styles.post_details__back_link}>
+        <ChevronIcon />
+
+        <span>Назад</span>
+      </Link>
 
       {currentPost && (
         <>
@@ -86,11 +73,8 @@ export const PostDetails = (props: PostDetailsProps) => {
 
       {(previousPost || nextPost) && (
         <div className={styles.post_details__read_more}>
-          <h3>Возможно вам будет интересно:</h3>
-          <div className={styles.post_details__read_more_items}>
-            {previousPost && <Post {...previousPost} />}
-            {nextPost && <Post {...nextPost} />}
-          </div>
+          {nextPost ? <MiniPost {...nextPost} /> : <div />}
+          {previousPost ? <MiniPost {...previousPost} align="right" /> : <div />}
         </div>
       )}
     </PostsLayout>

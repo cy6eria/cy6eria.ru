@@ -26,9 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
               {
                 $project: {
                   createdAt: 1,
-                  picture: 1,
                   title: 1,
-                  intro: 1,
                 }
               },
               {
@@ -58,9 +56,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
               {
                 $project: {
                   createdAt: 1,
-                  picture: 1,
                   title: 1,
-                  intro: 1,
                 }
               },
               {

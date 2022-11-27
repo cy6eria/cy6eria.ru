@@ -1,12 +1,11 @@
-.posts > article {
+.posts {
   max-width: 800px;
   margin: 0 auto;
-}
-
-.posts:not(:last-child) {
-  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 5.5rem;
 }
 
 .pagination {
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
