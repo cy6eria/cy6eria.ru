@@ -17,6 +17,8 @@ export const Navbar = (props: NavbarProps) => {
           className={styles.Navbar__avatar}
           src="https://res.cloudinary.com/cy6eria/image/upload/ar_1:1,bo_1px_solid_rgb:ffffff,c_fill,g_face,r_max,w_100,x_0,z_0.1/a_0/v1588699467/IMG_1683.jpg"
           alt="Парень в очках"
+          width={102}
+          height={102}
         />
         <div className={styles.Navbar__title}>
           <div className={styles.Navbar__highlighted}>Евгений Гундоров</div>

@@ -108,6 +108,8 @@ export const MainPage: FC<IProps> = props => {
           <Image
             src="https://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg"
             alt={localization.image.alt}
+            width={800}
+            height={600}
           />
           <figcaption>{localization.image.caption}</figcaption>
         </figure>
