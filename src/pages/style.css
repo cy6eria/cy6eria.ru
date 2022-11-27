@@ -42,19 +42,21 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-size: 1rem;
   margin: 0;
+  word-break: break-word;
 }
 
 pre {
   border: 1px solid #ddd;
   border-radius: .5rem;
   padding: 1.5rem;
-  margin-bottom: 0;
+  margin: 0;
   white-space: pre;
   word-wrap: normal;
   overflow-wrap: normal;
   background: #161b22;
   color: #f0f6fc;
   overflow: auto;
+  display: none;
 }
 
 img {
@@ -74,10 +76,4 @@ img {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (max-width: 767px) {
-  p {
-    margin: 0 0 1rem;
-  }
 }
