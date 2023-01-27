@@ -17,8 +17,8 @@ export const Social = (props: SocialProps) => {
       <a href="https://twitter.com/cy6eria" target="_blank" rel="noreferrer">
         <span className="icon-twitter" aria-label="Twitter" />
       </a>
-      <a href="https://vk.com/cy6eria" target="_blank" rel="noreferrer">
-        <span className="icon-vk" aria-label="Vkontakte" />
+      <a href="https://www.linkedin.com/in/cy6eria" target="_blank" rel="noreferrer">
+        <span className="icon-linkedin" aria-label="Linked in" />
       </a>
       <a href="https://www.instagram.com/cy6eria" target="_blank" rel="noreferrer">
         <span className="icon-instagram" aria-label="Instagram" />

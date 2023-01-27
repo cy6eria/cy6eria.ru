@@ -9,30 +9,15 @@
   transition: color .3s ease;
 }
 
-.social a :global(.icon-facebook:before) {
-  content: "\e900";
-}
 .social a:hover :global(.icon-facebook:before) {
   color: #2d88ff;
-}
-.social a :global(.icon-github:before) {
-  content: "\e901";
-}
-.social a :global(.icon-instagram:before) {
-  content: "\e902";
 }
 .social a:hover :global(.icon-instagram:before) {
   color: #e4405f;
 }
-.social a :global(.icon-twitter:before) {
-  content: "\e904";
-}
 .social a:hover :global(.icon-twitter:before) {
   color: #1da1f2;
 }
-.social a :global(.icon-vk:before) {
-  content: "\e903";
-}
-.social a:hover :global(.icon-vk:before) {
+.social a:hover :global(.icon-linkedin:before) {
   color: #4a76a8;
 }

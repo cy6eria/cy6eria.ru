@@ -1,0 +1,46 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  background-color: var(--dirty-blue);
+  padding: 1.5rem 3rem;
+  gap: 2rem;
+  color: #fff;
+  align-items: center;
+}
+
+.name {
+  font-size: 3rem;
+}
+
+.position {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.avatar {
+  border: 1px solid #fff;
+  background-image: url('https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_600/v1588699467/IMG_1683.jpg');
+  background-size: cover;
+  background-position: right;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.contacts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.4rem;
+}
+
+.contacts li {
+  display: flex;
+  align-items: center;
+}
+
+.contacts li span {
+  margin-right: 0.4rem;
+}

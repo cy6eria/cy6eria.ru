@@ -1,0 +1,1 @@
+export { EducationRecord } from './EducationRecord';

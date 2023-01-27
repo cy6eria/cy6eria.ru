@@ -9,6 +9,14 @@
   font-style: normal;
 }
 
+:root {
+  --light-pink: #EDAFB8;
+  --light-yellow: rgb(232, 221, 181);
+  --pale-blue: #95B8D1;
+  --dirty-blue: #666A86;
+  --dirty-black: #333333;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,4 +83,32 @@ img {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-mail:before {
+  content: "\ea86";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-telegram:before {
+  content: "\ea95";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+.icon-linkedin:before {
+  content: "\eac9";
+}
+.icon-location:before {
+  content: "\e947";
 }

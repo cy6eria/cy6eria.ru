@@ -1,0 +1,33 @@
+.section ul {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  page-break-after: auto;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.position span {
+  display: inline-block;
+  border-bottom: 1px solid var(--light-yellow);
+}
+
+.period {
+  text-align: right;
+}
+
+.company {
+  font-weight: 600;
+}
+
+.address {
+  display: inline;
+  color: #aaa;
+  font-style: normal;
+}
+
+.technologies span:not(:last-child)::after {
+  content: ', ';
+}
