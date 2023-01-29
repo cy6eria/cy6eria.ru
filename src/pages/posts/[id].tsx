@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     return {
       props: {
-        currentPost: data.documents[0].current?.[0] || null,
+        currentPost: data.documents[0].current?.[0],
         previousPost: data.documents[0].prev?.[0] || null,
         nextPost: data.documents[0].next?.[0] || null,
       },
