@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Social } from '../Social';
 import { MainNavigation } from '../MainNavigation';
 import styles from './MainPage.module.scss';
@@ -105,11 +104,9 @@ export const MainPage: FC<IProps> = props => {
         {localization.about}
         
         <figure>
-          <Image
-            src="https://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg"
+          <img
+            src="https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_800/v1520800210/pic.jpg"
             alt={localization.image.alt}
-            width={800}
-            height={600}
           />
           <figcaption>{localization.image.caption}</figcaption>
         </figure>
