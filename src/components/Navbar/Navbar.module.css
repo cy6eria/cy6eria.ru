@@ -22,7 +22,7 @@
 }
 
 .Navbar__highlighted {
-  font-family: Pacifico;
+  font-family: var(--font-pacifico);
   font-size: 1.5rem;
   line-height: 1.2rem;
 }

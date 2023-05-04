@@ -1,6 +1,6 @@
 import { PostsLayout, ErrorPageContent } from '@components';
 
-const Custom404 = () => {
+export default function Custom404 () {
   return (
     <PostsLayout>
       <ErrorPageContent
@@ -14,5 +14,3 @@ const Custom404 = () => {
     </PostsLayout>
   );
 }
-
-export default Custom404;

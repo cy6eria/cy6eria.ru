@@ -1,19 +1,18 @@
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import { Social } from '../Social';
 import { MainNavigation } from '../MainNavigation';
 import styles from './MainPage.module.scss';
 
-interface IProps {
-  acceptLanguage: string;
+interface MainPageProps {
+  language: string;
 }
 
-export const MainPage: FC<IProps> = props => {
-  const { acceptLanguage } = props;
+export const MainPage = (props: MainPageProps) => {
+  const { language } = props;
 
   const localization = useMemo(() => {
-    if (acceptLanguage.indexOf('ru') >= 0) {
+    if (language === 'ru') {
       return {
         header: {
           subheader: 'Привет, меня зовут...',
@@ -50,21 +49,11 @@ export const MainPage: FC<IProps> = props => {
         caption: 'My wife Sasha showing who cy6eria is.',
       },
     }
-  }, [acceptLanguage]);
+  }, [language]);
 
   return (
     <>
       <section className={styles.splash}>
-        <Head>
-          <title>Главная - Eugene Gundorov (cy6eria)</title>
-          <meta name="description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." />
-          <meta property="og:title" content="Главная - Eugene Gundorov (cy6eria)" />
-          <meta property="og:description" content="Привет. Меня зовут Евгений Гундоров (Eugene Gundorov) так же никому не известный как cy6eria. Я front-end разработчик. Увлекаюсь программированием, робототехникой, фотографией и музыкой." />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content="https://cy6eria.ru/about" />
-          <meta property="og:image" content="https://res.cloudinary.com/cy6eria/image/upload/v1520800210/pic.jpg" />
-        </Head>
-
         <div
           className={styles.splash__image}
           role="img"
@@ -77,7 +66,7 @@ export const MainPage: FC<IProps> = props => {
               <span className={styles.subheader}>
                 {localization.header.subheader}
               </span>
-              <span className={styles.name} role="heading">
+              <span className={styles.name}>
                 {localization.header.name}
               </span>
             </h1>

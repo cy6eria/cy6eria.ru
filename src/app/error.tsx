@@ -1,3 +1,5 @@
+'use client';
+
 import { PostsLayout, ErrorPageContent } from '@components';
 
 const Custom500 = () => {

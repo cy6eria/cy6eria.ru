@@ -17,7 +17,7 @@ export const Post = (props: IProps) => {
 
   return (
     <article className={style.post}>
-      <Link href="/posts/[id]" as={`/posts/${_id}`}>
+      <Link href={`/posts/${_id}`}>
         <header
           className={style.post__picture}
           style={{ backgroundImage: `url(${picture})` }}
