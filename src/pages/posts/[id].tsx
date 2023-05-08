@@ -21,7 +21,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
                 },
               },
               {
-                $sort : { createdAt : -1 },
+                $sort : { createdAt : 1 },
+              },
+              {
+                $limit: 1
               },
               {
                 $project: {
@@ -29,9 +32,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
                   title: 1,
                 }
               },
-              {
-                $limit: 1
-              }
             ],
             current: [{
               $match: {
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
                 }
               },
               {
-                $sort : { createdAt : 1 },
+                $sort : { createdAt : -1 },
               },
               {
                 $project: {
