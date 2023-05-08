@@ -22,10 +22,12 @@ export const Post = (props: IProps) => {
           className={style.post__picture}
           style={{ backgroundImage: `url(${picture})` }}
         >
-          <h4 className={style.post__header}>{title}</h4>
-          <time dateTime={createdAt} className={style.post__date}>
-            {format(createdAt)}
-          </time>
+          <div className={style.post__text}>
+            <h4 className={style.post__header}>{title}</h4>
+            <time dateTime={createdAt} className={style.post__date}>
+              {format(createdAt)}
+            </time>
+          </div>
         </header>
 
         <ReactMarkdown>{intro}</ReactMarkdown>
