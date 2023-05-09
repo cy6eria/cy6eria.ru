@@ -7,36 +7,50 @@ const ITEMS_PER_PAGE = 5;
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const page = Number.isNaN(Number(query.page)) ? 1 : Number(query.page);
 
-  const res = await getFromDatabase('aggregate', {
-    pipeline: [
-      {
-        '$facet': {
-          items: [
-            { $sort : { createdAt : -1 } },
-            {
-              '$project': {
-                title: 1,
-                intro: 1,
-                picture: 1,
-                createdAt: 1,
-              }
-            },
-            {
-              '$skip': (page - 1) * ITEMS_PER_PAGE,
-            },
-            {
-              '$limit': ITEMS_PER_PAGE,
-            },
-          ],
-          total: [
-            {
-              '$count': 'count',
-            },
-          ],
+  const pipeline  = [];
+
+  if (query.search) {
+    pipeline.push({
+      $search: {
+        index: "default",
+        text: {
+          query: query.search,
+          path: {
+            wildcard: "*"
+          }
         }
       }
-    ],
+    });
+  }
+
+  pipeline.push({
+    '$facet': {
+      items: [
+        { $sort : { createdAt : -1 } },
+        {
+          '$project': {
+            title: 1,
+            intro: 1,
+            picture: 1,
+            createdAt: 1,
+          }
+        },
+        {
+          '$skip': (page - 1) * ITEMS_PER_PAGE,
+        },
+        {
+          '$limit': ITEMS_PER_PAGE,
+        },
+      ],
+      total: [
+        {
+          '$count': 'count',
+        },
+      ],
+    }
   });
+
+  const res = await getFromDatabase('aggregate', { pipeline });
 
   const data = await res.data;
 
