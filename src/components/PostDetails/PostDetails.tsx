@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Head from 'next/head';
 import Link from 'next/link';
 import { format } from '@core';
 import { ChevronIcon } from '../ChevronIcon'
-import { PostsLayout } from '../PostsLayout';
 import { MiniPost } from '../MiniPost';
 import styles from './PostDetails.module.scss';
 
@@ -21,17 +19,16 @@ interface ExtendedPost extends ReducedPost {
 }
 
 interface PostDetailsProps {
-  isFetching: boolean;
   currentPost: ExtendedPost,
   previousPost: ReducedPost,
   nextPost: ReducedPost,
 }
 
 export const PostDetails = (props: PostDetailsProps) => {
-  const { isFetching, currentPost, previousPost, nextPost } = props;
+  const { currentPost, previousPost, nextPost } = props;
 
   return (
-    <PostsLayout isFetching={isFetching}>
+    <>
       <Link href="/posts" className={styles.post_details__back_link}>
         <ChevronIcon />
 
@@ -40,16 +37,6 @@ export const PostDetails = (props: PostDetailsProps) => {
 
       {currentPost && (
         <>
-          <Head>
-            <title>{currentPost.title} - Eugene Gundorov (cy6eria)</title>
-            <meta name="description" content={currentPost.intro} />
-            <meta property="og:title" content={`${currentPost.title} - Eugene Gundorov (cy6eria)`} />
-            <meta property="og:description" content={currentPost.intro} />
-            <meta property="og:type" content="article" />
-            <meta property="og:url" content={`https://cy6eria.ru/posts/${currentPost._id}`} />
-            <meta property="og:image" content={currentPost.picture} />
-          </Head>
-
           <header
             className={styles.post_details__header}
             style={{ backgroundImage: `url('${currentPost.picture}')` }}
@@ -77,6 +64,6 @@ export const PostDetails = (props: PostDetailsProps) => {
           {previousPost ? <MiniPost {...previousPost} align="right" /> : <div />}
         </div>
       )}
-    </PostsLayout>
+    </>
   );
 }

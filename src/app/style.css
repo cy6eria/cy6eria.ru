@@ -23,11 +23,6 @@
   box-sizing: border-box;
 }
 
-div {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-}
-
 html, body {
   width: 100%;
   min-height: 100%;
@@ -40,6 +35,8 @@ html {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   font-size: 16px;
+  font-family: var(--font-open-sans), sans-serif;
+  font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Fragment, useRef } from 'react';
 import { WorkHistoryRecord } from '../WorkHistoryRecord';
 import { EducationRecord } from '../EducationRecord';
@@ -14,7 +16,7 @@ interface CVProps {
       location: string;
       position: string;
       startDate: Date;
-      endDate: Date;
+      endDate: Date | null;
       description: string;
       responsibilities: string;
       achievements?: string;

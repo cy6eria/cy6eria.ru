@@ -7,7 +7,7 @@ interface WorkHistoryRecordProps {
     location: string;
     position: string;
     startDate: Date;
-    endDate: Date;
+    endDate: Date | null;
     description: string;
     responsibilities: string;
     achievements?: string;
@@ -34,7 +34,7 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
 
         <h4>Achievements</h4>
 
-        <ReactMarkdown>{achievements}</ReactMarkdown>
+        {achievements && <ReactMarkdown>{achievements}</ReactMarkdown>}
 
         <p className={styles.technologies}>Technologies: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
       </section>   
