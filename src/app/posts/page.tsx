@@ -62,7 +62,14 @@ async function getPosts ({ page, search }) {
 export default async function Page({ searchParams }) {
   const { posts, page, totalCount, itemsPerPage } = await getPosts({ page: searchParams.page, search: searchParams.search });
 
-  return <Posts posts={posts} page={page} totalCount={totalCount} itemsPerPage={itemsPerPage} />
+  return (
+    <Posts
+      posts={posts}
+      page={page}
+      totalCount={totalCount}
+      itemsPerPage={itemsPerPage}
+    />
+  );
 }
 
 export async function generateMetadata() {

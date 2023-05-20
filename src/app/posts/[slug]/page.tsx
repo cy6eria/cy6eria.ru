@@ -4,7 +4,11 @@ import { PostDetails } from '@components/PostDetails';
 
 async function getPostMeta ({ id }) {
   const data = await getFromDatabase('findOne', {
-    _id: id,
+    filter: {
+      _id: {
+        $oid: id
+      }
+    }
   });
 
   return data?.document ?? null;
@@ -112,7 +116,7 @@ export default async function Page ({ params }) {
   );
 }
 
-export async function generateMetadata(params) {
+export async function generateMetadata({ params }) {
   const data = await getPostMeta({ id: params.slug });
 
   if (!data) {
@@ -128,13 +132,9 @@ export async function generateMetadata(params) {
     openGraph: {
       title,
       description,
-      url: 'https://cy6eria.ru/posts',
+      url: `https://cy6eria.ru/posts/${params.slug}`,
       siteName: 'Eugene Gundorov (cy6eria)',
-      images: [
-        {
-          url: 'https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_800/v1588699467/IMG_1683.jpg',
-        },
-      ],
+      images: [data.picture],
       locale: 'ru-RU',
       type: 'article',
     },
