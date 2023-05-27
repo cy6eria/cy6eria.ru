@@ -22,7 +22,7 @@ export const Post = (props: IProps) => {
           className={style.post__picture}
           style={{ backgroundImage: `url(${picture})` }}
         >
-          <div className={style.post__text}>
+          <div className={style.post__title}>
             <h4 className={style.post__header}>{title}</h4>
             <time dateTime={createdAt} className={style.post__date}>
               {format(createdAt)}
@@ -30,7 +30,9 @@ export const Post = (props: IProps) => {
           </div>
         </header>
 
-        <ReactMarkdown>{intro}</ReactMarkdown>
+        <div className={style.post__content}>
+          <ReactMarkdown>{intro}</ReactMarkdown>
+        </div>
       </Link>
     </article>
   );

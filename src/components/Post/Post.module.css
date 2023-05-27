@@ -1,13 +1,11 @@
 .post a {
+  display: block;
   text-decoration: none;
-  color: #000;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.1);
 }
 
 .post__picture {
-  height: 25rem;
+  height: 20rem;
   background-color: #ddd;
   background-size: cover;
   background-position: center;
@@ -18,14 +16,23 @@
   justify-content: flex-end;
 }
 
-.post__text {
-  padding: 2rem;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.75) 100%);
+.post__title {
+  padding: 4rem 2rem 2rem;
+  background-image: linear-gradient(
+    to bottom, 
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.2) 20%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.6) 60%,
+    rgba(0,0,0,0.8) 80%,
+    rgba(0,0,0,1) 100%
+  );
 }
 
 .post__header {
   font-size: 2rem;
   margin: 0 0 .5rem;
+  font-weight: lighter;
 }
 
 .post__date {
@@ -33,10 +40,17 @@
   text-transform: capitalize;
 }
 
+.post__content {
+  padding: 1.5rem;
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.5rem;
+}
+
 @media (max-width: 767px) {
   .post__picture {
     height: 12rem;
-    padding: 0 1rem 1rem;
   }
 
   .post__header {

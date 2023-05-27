@@ -9,3 +9,9 @@
 .pagination {
   padding-top: 3rem;
 }
+
+@media (max-width: 767px) {
+  .posts {
+    row-gap: 2.5rem;
+  }
+}
