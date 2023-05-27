@@ -32,7 +32,7 @@
   align-self: center;
 }
 
-.Navbar__nav a {
+.Navbar__nav li a {
   color: #000;
   font-size: 1rem;
 }
