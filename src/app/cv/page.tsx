@@ -6,7 +6,7 @@ const data = {
     contacts: [
       {
         type: 'location',
-        value: 'Kazakhstan, Almaty',
+        value: 'Barcelona, Spain',
       },
       {
         type: 'mail',
@@ -27,12 +27,21 @@ const data = {
     ],
     summary: 'Experienced JavaScript Developer with 10+ years in the industry. Proficient with React. Created web banking apps with big corporations and real time data visualization tools in a startup way.',
     workHistory: [
+          {
+            companyName: 'Telleqt PTE, LTD',
+            location: 'Singapore (Remote)',
+            position: 'Front-end developer',
+            startDate: new Date(2023, 2),
+            endDate: null,
+            description: 'My current job',
+            technologies: ['React', 'Typescript', 'Redux', 'Webpack', 'Agile', 'git'],
+        },
         {
             companyName: 'Multibonus',
             location: 'Russia, Moscow (Remote)',
             position: 'Lead Front-end developer',
             startDate: new Date(2021, 5),
-            endDate: null,
+            endDate: new Date(2023, 1),
             description: 'Multibonus is a virtual currency which our clients can convert in real money or spend in our marketplace.',
             responsibilities: `
 * Initial estimation of epics as a representative of the front end team;

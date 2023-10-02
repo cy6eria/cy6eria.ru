@@ -8,8 +8,8 @@ interface WorkHistoryRecordProps {
     position: string;
     startDate: Date;
     endDate: Date | null;
-    description: string;
-    responsibilities: string;
+    description?: string;
+    responsibilities?: string;
     achievements?: string;
     technologies: string[];
 }
@@ -26,15 +26,22 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
           <div className={styles.period}><time>{formater.format(startDate)}</time> – <time>{endDate === null ? 'Now' : formater.format(endDate)}</time></div>
         </header>
         <h4><span className={styles.company}>{companyName}</span>, <address className={styles.address}>{location}</address></h4>
-        <ReactMarkdown>{description}</ReactMarkdown>
+        {description && <ReactMarkdown>{description}</ReactMarkdown>}
 
-        <h4>Responsibilities</h4>
+        {responsibilities && (
+          <>
+            <h4>Responsibilities</h4>
 
-        <ReactMarkdown>{responsibilities}</ReactMarkdown>
+            <ReactMarkdown>{responsibilities}</ReactMarkdown>
+          </>
+        )}
 
-        <h4>Achievements</h4>
-
-        {achievements && <ReactMarkdown>{achievements}</ReactMarkdown>}
+        {achievements && (
+          <>
+            <h4>Achievements</h4>
+            <ReactMarkdown>{achievements}</ReactMarkdown>
+          </>
+        )}
 
         <p className={styles.technologies}>Technologies: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
       </section>   

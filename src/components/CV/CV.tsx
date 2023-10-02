@@ -17,8 +17,8 @@ interface CVProps {
       position: string;
       startDate: Date;
       endDate: Date | null;
-      description: string;
-      responsibilities: string;
+      description?: string;
+      responsibilities?: string;
       achievements?: string;
       technologies: string[];
   }[];
