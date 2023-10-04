@@ -59,6 +59,10 @@
     margin: 0;
   }
 
+  .controls {
+    display: none;
+  }
+
   @page {
     margin-left: 0;
     margin-right: 0;

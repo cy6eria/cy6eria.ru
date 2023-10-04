@@ -16,7 +16,11 @@ export const Header = (props: HeaderProps) => {
         <h1 className={styles.name}>{name}</h1>
         <div className={styles.position}>{position}</div>
         <ul className={styles.contacts}>
-          {contacts.map((i) => <li key={i.type}><span className={`icon-${i.type}`} aria-label={i.type} /> {i.value}</li>)}
+          {contacts.map((i) => (
+            <li key={i.type}>
+              <span className={`icon-${i.type}`} aria-label={i.type} /> {i.value}
+            </li>
+          ))}
         </ul>
       </div>
       <div>

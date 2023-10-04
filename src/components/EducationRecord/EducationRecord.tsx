@@ -1,16 +1,17 @@
 import React from 'react';
 
 interface EducationRecordProps {
+  location: 'es' | 'en';
   name: string;
   startDate: Date;
   endDate: Date;
   degree: string;
 }
 
-const formater = Intl.DateTimeFormat('en', { year: 'numeric', month: 'long' });
-
 export const EducationRecord = (props: EducationRecordProps) => {
-  const { name, startDate, endDate, degree } = props;
+  const { locale, name, startDate, endDate, degree } = props;
+
+  const formater = Intl.DateTimeFormat(locale ?? 'en', { year: 'numeric', month: 'long' });
 
   return (
     <section>

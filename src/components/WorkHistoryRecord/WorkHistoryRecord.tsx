@@ -3,6 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import styles from './WorkHistoryRecord.module.css';
 
 interface WorkHistoryRecordProps {
+    locale: 'es' | 'en';
+    settings: {
+      responsibilities: string;
+      achievements: string;
+      technologies: string;
+    };
     companyName: string;
     location: string;
     position: string;
@@ -14,10 +20,10 @@ interface WorkHistoryRecordProps {
     technologies: string[];
 }
 
-const formater = Intl.DateTimeFormat('en', { year: 'numeric', month: 'short' });
-
 export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
-    const { companyName, location, position, startDate, endDate, description, responsibilities, achievements, technologies } = props;
+    const { locale, settings, companyName, location, position, startDate, endDate, description, responsibilities, achievements, technologies } = props;
+
+    const formater = Intl.DateTimeFormat(locale ?? 'en', { year: 'numeric', month: 'short' });
 
     return (
       <section className={styles.section}>
@@ -30,7 +36,7 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
 
         {responsibilities && (
           <>
-            <h4>Responsibilities</h4>
+            <h4>{settings.responsibilities}</h4>
 
             <ReactMarkdown>{responsibilities}</ReactMarkdown>
           </>
@@ -38,12 +44,12 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
 
         {achievements && (
           <>
-            <h4>Achievements</h4>
+            <h4>{settings.achievements}</h4>
             <ReactMarkdown>{achievements}</ReactMarkdown>
           </>
         )}
 
-        <p className={styles.technologies}>Technologies: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
+        <p className={styles.technologies}>{settings.technologies}: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
       </section>   
     );
 }
