@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface EducationRecordProps {
-  location: 'es' | 'en';
+  locale: 'es' | 'en';
   name: string;
   startDate: Date;
   endDate: Date;
