@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         {children}
 
-        {!isDev && <YandexMetrika />}
+        {!isDev && <YandexMetrika />} 
       </body>
     </html>
   );
