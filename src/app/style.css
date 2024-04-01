@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'icomoon';
   src:  url('/fonts/icomoon.eot?rm21e8');

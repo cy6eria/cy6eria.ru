@@ -8,6 +8,8 @@ interface MainPageProps {
   language: string;
 }
 
+const pStyle = 'px-8 pb-8 text-base md:text-2xl';
+
 export const MainPage = (props: MainPageProps) => {
   const { language } = props;
 
@@ -21,8 +23,8 @@ export const MainPage = (props: MainPageProps) => {
         },
         about: (
           <>
-            <p>...также никому не известный как <strong>cy6eria</strong> (но я работаю над этим). Я живу в России, городе Казани. Я увлекаюсь программированием, робототехникой, IoT, фотографией, музыкой, а так же люблю путешествовать.</p>
-            <p><Link href="/posts">В моем блоге</Link> я рассказываю про свой опыт, про проблемы с которыми я сталкивался, и как удалось их решить. Если у вас есть вопросы, или вы хотите что-то обсудить, то ищите меня в социальных сетях. Мои профили вы можете найти на главной странице выше.</p>
+            <p className={pStyle}>...также никому не известный как <strong className="font-bold">cy6eria</strong> (но я работаю над этим). Я живу в России, городе Казани. Я увлекаюсь программированием, робототехникой, IoT, фотографией, музыкой, а так же люблю путешествовать.</p>
+            <p className={pStyle}><Link href="/posts">В моем блоге</Link> я рассказываю про свой опыт, про проблемы с которыми я сталкивался, и как удалось их решить. Если у вас есть вопросы, или вы хотите что-то обсудить, то ищите меня в социальных сетях. Мои профили вы можете найти на главной странице выше.</p>
           </>
         ),
         image: {
@@ -40,8 +42,8 @@ export const MainPage = (props: MainPageProps) => {
       },
       about: (
         <>
-          <p>...also, no one knows me as <strong>cy6eria</strong> (but I`m working on it). I live in Russia, Kazan, work as a front-end developer. I`m interested in programming, robotics, IoT, photography, music, and also love to travel.</p>
-          <p><Link href="/posts">Check my blog!</Link> There is I tell about my expirience, which problems I`ve faced, and how I`ve solved them. If You want to know more about something, or if You have another opinion, find me in the social networks! All my profiles you can find above.</p>
+          <p className={pStyle}>...also, no one knows me as <strong className="font-bold">cy6eria</strong> (but I`m working on it). I live in Russia, Kazan, work as a front-end developer. I`m interested in programming, robotics, IoT, photography, music, and also love to travel.</p>
+          <p className={pStyle}><Link href="/posts">Check my blog!</Link> There is I tell about my expirience, which problems I`ve faced, and how I`ve solved them. If You want to know more about something, or if You have another opinion, find me in the social networks! All my profiles you can find above.</p>
         </>
       ),
       image: {
@@ -89,7 +91,8 @@ export const MainPage = (props: MainPageProps) => {
           </svg>
         </div>
       </section>
-      <section className={styles.about}>
+
+      <section className="max-w-screen-md container mx-auto py-4 md:py-8">
         {localization.about}
         
         <figure>
@@ -97,7 +100,7 @@ export const MainPage = (props: MainPageProps) => {
             src="https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_800/v1520800210/pic.jpg"
             alt={localization.image.alt}
           />
-          <figcaption>{localization.image.caption}</figcaption>
+          <figcaption className="text-center py-4">{localization.image.caption}</figcaption>
         </figure>
       </section>
     </>
