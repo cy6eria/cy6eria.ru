@@ -56,23 +56,23 @@ export const CV = (props: CVProps) => {
                   ))}
                 </div>
               </div>
-              <div>
-                <h2>{settings.education.title}</h2>
-                <div className={styles.sectionsList}>
-                  {education.map(({ name, startDate, endDate, degree }) => (
-                      <EducationRecord
-                          locale={locale}
-                          key={name}
-                          name={name}
-                          startDate={startDate}
-                          endDate={endDate}
-                          degree={degree}
-                      />
-                  ))}
-                </div>
-              </div>
               <div className={styles['split-layout']}>
                 <div>
+                  <h2>{settings.education.title}</h2>
+                  <div className={styles.sectionsList}>
+                    {education.map(({ name, startDate, endDate, degree }) => (
+                        <EducationRecord
+                            locale={locale}
+                            key={name}
+                            name={name}
+                            startDate={startDate}
+                            endDate={endDate}
+                            degree={degree}
+                        />
+                    ))}
+                  </div>
+                </div>
+                {/* <div>
                   <h2>{settings.keySkills.title}</h2>
                   <dl>
                     {keySkills.map((i) => (
@@ -81,7 +81,7 @@ export const CV = (props: CVProps) => {
                       </Fragment>
                     ))}
                   </dl>
-                </div>
+                </div> */}
                 <div>
                   <h2>{settings.language.title}</h2>
                   <dl>
