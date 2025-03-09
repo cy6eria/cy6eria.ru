@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './ErrorPageContent.module.css';
 
 interface ErrorPageContentProps {
@@ -16,7 +17,7 @@ export const ErrorPageContent = (props: ErrorPageContentProps) => {
 
   return (
     <div className={styles.error_page_content}>
-      {img && <img className={styles.img} src={img} />}
+      {img && <Image className={styles.img} src={img} width={120} height={120} alt='Funny animation' />}
       <h1 className={styles.code}>{code}</h1>
       <h3 className={styles.error}>{title}</h3>
       <p className={styles.description}>{message}</p>

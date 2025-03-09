@@ -12,10 +12,10 @@ interface CVProps {
     settings: Settings;
     data: Data;
   };
-  es: {
-    settings: Settings;
-    data: Data;
-  };
+  // es: {
+  //   settings: Settings;
+  //   data: Data;
+  // };
 }
 
 export const CV = (props: CVProps) => {

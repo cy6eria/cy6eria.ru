@@ -44,6 +44,6 @@ export interface Data {
     endDate: Date;
     degree: string;
   }[];
-  keySkills: { label: string, value: number }[];
+  keySkills: { label: string, value: string }[];
   language: { label: string, value: string }[];
 }

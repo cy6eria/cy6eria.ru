@@ -1,9 +1,7 @@
 import React, { useMemo } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Social } from '../Social';
-import { MainNavigation } from '../MainNavigation';
-import { headers } from 'next/headers';
+// import { MainNavigation } from '../MainNavigation';
 
 interface MainPageProps {
   language: string;
