@@ -16,7 +16,7 @@ export const ErrorPageContent = (props: ErrorPageContentProps) => {
 
   return (
     <div className={styles.error_page_content}>
-      {img && <img src={img} />}
+      {img && <img className={styles.img} src={img} />}
       <h1 className={styles.code}>{code}</h1>
       <h3 className={styles.error}>{title}</h3>
       <p className={styles.description}>{message}</p>

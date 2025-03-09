@@ -49,7 +49,7 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
           </>
         )}
 
-        <p className={styles.technologies}>{settings.technologies}: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
+        <p className={styles.technologies}><b>{settings.technologies}</b>: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
       </section>   
     );
 }

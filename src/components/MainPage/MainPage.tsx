@@ -1,108 +1,91 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Social } from '../Social';
 import { MainNavigation } from '../MainNavigation';
-import styles from './MainPage.module.scss';
+import { headers } from 'next/headers';
 
 interface MainPageProps {
   language: string;
 }
 
-const pStyle = 'px-8 pb-8 text-base md:text-2xl';
+const pStyle = 'text-slate-900 dark:text-white text-base md:text-2xl mb-4';
+
+const imageDescription = 'This photo features a man standing in a narrow, curved passageway formed by large, rusted metal walls. He is leaning slightly against one of the walls with his hands behind his back. He is wearing a greenish-gray T-shirt, khaki cargo shorts, and a baseball cap. He has a small black crossbody bag, white socks, and gray sandals with yellow accents. His facial expression appears neutral, and he is looking at the camera. The setting appears to be an art installation or architectural structure, possibly made of weathered steel. The lighting is soft and diffused, highlighting the texture of the metal walls.';
 
 export const MainPage = (props: MainPageProps) => {
   const { language } = props;
 
   const localization = useMemo(() => {
-    if (language === 'ru') {
+    if (language === 'es') {
       return {
         header: {
-          subheader: 'Привет, меня зовут...',
-          name: 'Евгений Гундоров',
-          imageDescription: 'Русый парень в очках и с бородой и короткой стрижкой сидит в аудитории. На фоне видны люди, но их лица едва различимы.'
+          subheader: 'Hola, me llamo',
+          name: 'Eugene Gundorov',
+          position: 'Desarrollador web líder'
         },
         about: (
           <>
-            <p className={pStyle}>...также никому не известный как <strong className="font-bold">cy6eria</strong> (но я работаю над этим). Я живу в Барселоне, Испании. Я увлекаюсь программированием, робототехникой, IoT, фотографией, музыкой, а так же люблю путешествовать.</p>
-            <p className={pStyle}><Link href="/posts">В моем блоге</Link> я рассказываю про свой опыт, про проблемы с которыми я сталкивался, и как удалось их решить. Если у вас есть вопросы, или вы хотите что-то обсудить, то ищите меня в социальных сетях. Мои профили вы можете найти на главной странице выше.</p>
+            <p className={pStyle}><span className="font-bold">Un Ingeniero de Software Web</span> experimentado con más de 10 años en la industria. Competente con <span className="font-bold">React</span>.</p>
           </>
         ),
-        image: {
-          alt: 'Красивая русая девушка показывает на парня в очках.',
-          caption: 'Моя жена Саша показывает кто тут cy6eria.',
-        },
       }
     }
 
     return {
       header: {
-        subheader: 'Hi, my name is...',
+        subheader: 'Hi, my name is',
         name: 'Eugene Gundorov',
-        imageDescription: 'The short-hair fair-haired guy with beard and glasses is seating in the hall. There are people as a background, but their faces are blured.'
+        position: 'Leading web developer'
       },
       about: (
         <>
-          <p className={pStyle}>...also, no one knows me as <strong className="font-bold">cy6eria</strong> (but I`m working on it). I live in Barcelona, Spaine, work as a front-end developer. I`m interested in programming, robotics, IoT, photography, music, and also love to travel.</p>
-          <p className={pStyle}><Link href="/posts">Check my blog!</Link> There is I tell about my expirience, which problems I`ve faced, and how I`ve solved them. If You want to know more about something, or if You have another opinion, find me in the social networks! All my profiles you can find above.</p>
+          <p className={pStyle}>An experienced <span className="font-bold">Web Software Engineer</span> with 10+ years in the industry. Proficient with <span className="font-bold">React</span>.</p>
         </>
       ),
-      image: {
-        alt: 'The beautiful fair-haired young lady pointing to the guy with glasses.',
-        caption: 'My wife Sasha showing who cy6eria is.',
-      },
     }
-  }, [language]);
+  }, []);
 
   return (
-    <>
-      <section className={styles.splash}>
-        <div
-          className={styles.splash__image}
-          role="img"
-          aria-label={localization.header.imageDescription}
-        >
-          <div className={styles.splash__content}>
-            <MainNavigation className={styles.splash__nav} />
+    <main className="bg-white dark:bg-slate-800">
+      <section className="container mx-auto grid grid-cols-none auto-rows-min lg:auto-rows-auto xl:grid-cols-5 lg:grid-cols-2 min-h-screen items-center">
+        <div className="col-span-1 xl:col-span-3 lg:col-span-1 order-2 lg:order-1 px-8 pb-8">
+          <h1 className="pb-8 text-slate-900 dark:text-white">
+            <span className="text-2xl sm:text-4xl block font-light">
+              {localization.header.subheader}
+            </span>
+            <span className="text-6xl sm:text-7xl block">
+              {localization.header.name}
+            </span>
+          </h1>
 
-            <h1 className={styles.splash__header}>
-              <span className={styles.subheader}>
-                {localization.header.subheader}
-              </span>
-              <span className={styles.name}>
-                {localization.header.name}
-              </span>
-            </h1>
-          </div>
+          {localization.about}
 
-          <Social className={styles.splash__social_buttons} />
+          <Social className="mt-8" />
+        </div>
+        <div className="col-span-1 py-8 sm:py-16 lg:py-0 xl:col-span-2 lg:col-span-1 order-1 lg:order-2 h-auto lg:h-full">
+          {/* <MainNavigation /> */}
+          <Image
+            className="object-cover h-64 h-full w-auto mx-0 hidden lg:block"
+            src="/img/standing.jpeg"
+            alt={imageDescription}
+            width={1620}
+            height={2160}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,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"
+          />
 
-          <svg
-            className={styles.splash__call_to_scroll}
-            xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
-            viewBox="0 0 24 24"
-            fill="none"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
+          <Image
+            className="object-cover h-64 sm:h-96 w-64 sm:w-96 shadow-inner rounded-full mx-auto lg:hidden"
+            src="/img/standing_cut.jpeg"
+            alt={imageDescription}
+            width={768}
+            height={768}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,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"
+          />
         </div>
       </section>
-
-      <section className="max-w-screen-md container mx-auto py-4 md:py-8">
-        {localization.about}
-        
-        <figure>
-          <img
-            src="https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_800/v1520800210/pic.jpg"
-            alt={localization.image.alt}
-          />
-          <figcaption className="text-center py-4">{localization.image.caption}</figcaption>
-        </figure>
-      </section>
-    </>
+    </main>
   );
 }

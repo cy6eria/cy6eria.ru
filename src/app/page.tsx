@@ -2,22 +2,23 @@ import { headers } from 'next/headers';
 import parser from 'accept-language-parser';
 import { MainPage } from '../components/MainPage';
 
-function getLanguage () {
-  const acceptLanguage = headers().get('accept-language');
+async function getLanguage () {
+  const currentHeaders = await headers();
+  const acceptLanguage = currentHeaders.get('accept-language');
 
   const [top] = parser.parse(acceptLanguage);
 
   return top ?? { code: 'ru', script: null, region: 'RU', quality: 1 };
 }
 
-export default function Page() {
-  const { code } = getLanguage();
+export default async function Page() {
+  const { code } = await getLanguage();
 
   return <MainPage language={code} />;
 }
 
-export function generateMetadata() {
-  const { code, region } = getLanguage();
+export async function generateMetadata() {
+  const { code, region } = await getLanguage();
 
   const title = code === 'ru' ? 'Главная - Евгений Гундоров (cy6eria)' : 'Main - Eugene Gundorov (cy6eria)';
   const description = code === 'ru'

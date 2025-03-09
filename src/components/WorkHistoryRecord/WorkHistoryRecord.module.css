@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0 0 0 1rem;
   page-break-after: auto;
+  list-style: '- ';
 }
 
 .header {
@@ -26,6 +27,10 @@
   display: inline;
   color: #aaa;
   font-style: normal;
+}
+
+.technologies b {
+  font-weight: 600;
 }
 
 .technologies span:not(:last-child)::after {

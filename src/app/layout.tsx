@@ -20,8 +20,9 @@ const openSans = Open_Sans({
   display: 'swap',
 });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  const acceptLanguage = headers().get('accept-language');
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const currentHeaders = await headers();
+  const acceptLanguage = currentHeaders.get('accept-language');
   const [top] = parser.parse(acceptLanguage);
   const isDev = process.env.NODE_ENV === 'development';
 
