@@ -3,7 +3,8 @@
   grid-template-columns: 1fr 200px;
   background-color: var(--dirty-blue);
   padding: 1.5rem 3rem;
-  gap: 2rem;
+  column-gap: 2rem;
+  row-gap: 0.5rem;
   color: #fff;
   align-items: center;
 }
@@ -17,14 +18,20 @@
   margin-bottom: 0.6rem;
 }
 
+.summary {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
 .avatar {
   border: 1px solid #fff;
   background-image: url('https://res.cloudinary.com/cy6eria/image/upload/c_scale,w_600/v1588699467/IMG_1683.jpg');
   background-size: cover;
   background-position: right;
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
+  justify-self: center;
 }
 
 .contacts {

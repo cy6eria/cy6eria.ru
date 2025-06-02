@@ -44,7 +44,7 @@ export const data = {
       value: 'cy6eria',
     }
   ],
-  summary: 'Experienced Front-end Software Engineer with over 10 years in the industry. Proficient in React, Typescript, and modern web technologies. Extensive experience leading distributed teams, creating scalable web applications, and developing innovative solutions such as NFT marketplaces and real-time visualization tools.',
+  summary: 'Experienced Front-end Software Engineer with over 15 years in the industry. Proficient in React, Typescript, and modern web technologies. Extensive experience leading distributed teams, creating scalable web applications, and developing innovative solutions such as Web3 marketplaces and real-time visualization tools.',
   workHistory: [
     {
       companyName: 'Telleqt PTE, LTD',
@@ -61,8 +61,9 @@ export const data = {
       achievements: `
 * Launched an NFT marketplace using the Seaport protocol.
 * Proposed and implemented a PWA as a cost-effective alternative to a mobile app.
+* Migrated codebase to typescript what helped to increase quality of new features.
       `,
-      technologies: ['React', 'Redux', 'Typescript', 'Ethereum', 'viem', 'wagmi', 'Seaport', 'MUI', 'Webpack', 'Node.js', 'Agile'],
+      technologies: ['React', 'Redux', 'Typescript', 'Ethereum', 'viem', 'wagmi', 'Seaport', 'MUI', 'Webpack', 'Next.js', 'Node.js', 'Agile'],
     },
     {
       companyName: 'Multibonus',
@@ -78,7 +79,7 @@ export const data = {
       `,
       achievements: `
 * Enhanced developer engagement in sprint discussions.
-* Initiated migration to a standardized stack, improving the hiring process.
+* Инициировал переход с Reatom на Effector, что упростило процесс найма и разработки.
       `,
       technologies: ['React', 'Typescript', 'Reatom', 'Effector', 'Styled Components', 'Webpack', 'Agile'],
     },
@@ -149,15 +150,19 @@ export const data = {
     },
     {
       label: 'Front-end',
-      value: 'React, Redux, AngularJS, Styled Components, ',
+      value: 'React, Redux, Styled Components, Tailwind, Material UI',
     },
     {
       label: 'Back-end',
       value: 'Node.js, Next.js, GraphQL (Apollo)',
     },
     {
+      label: 'Testing',
+      value: 'Jest, react-testing-library, Cypress',
+    },
+    {
       label: 'Web3',
-      value: 'Ethereum, Seaport Protocol, Solana',
+      value: 'Ethereum, Seaport Protocol',
     },
     {
       label: 'Tools',
@@ -175,11 +180,11 @@ export const data = {
     },
     {
       label: 'English',
-      value: 'B2 (Upper Intermediate)',
+      value: 'B2+',
     },
     {
       label: 'Spanish',
-      value: 'A1 (Beginner)',
+      value: 'A1',
     },
   ],
   education: [

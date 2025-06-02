@@ -15,9 +15,11 @@ export const EducationRecord = (props: EducationRecordProps) => {
 
   return (
     <section>
-      <h3>{name}</h3>
-      <h4>{degree}</h4>
-      <div><time>{formater.format(startDate)}</time> – <time>{formater.format(endDate)}</time></div>
+      <div className="flex gap-1">
+        <h3 className="font-bold">{name}</h3>
+        <div><time>{formater.format(startDate)}</time> – <time>{formater.format(endDate)}</time></div>
+      </div>
+      <p>{degree}</p>
     </section>  
   );
 }

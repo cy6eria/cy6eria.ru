@@ -32,65 +32,63 @@ export const CV = (props: CVProps) => {
           <button type='button' onClick={() => setLocale('es')}>ES</button>
         </div>
         <div ref={cvContainer} className={styles.wrapper}>
-          <Header name={name} position={position} contacts={contacts} />
+          <Header name={name} position={position} contacts={contacts} summary={summary} />
           <main className={styles.main}>
-              <p>{summary}</p>
-
-              <div className={styles['split-layout']}>
-                <div>
-                  <h2>{settings.keySkills.title}</h2>
-                  <dl>
-                    {keySkills.map((i) => (
-                      <Fragment key={i.label}>
-                        <dt>{i.label}</dt><dd>{i.value}</dd>
-                      </Fragment>
-                    ))}
-                  </dl>
-                </div>
-                <div>
-                  <h2>{settings.language.title}</h2>
-                  <dl>
-                    {language.map((i) => <Fragment key={i.label}><dt>{i.label}</dt><dd>{i.value}</dd></Fragment>)}
-                  </dl>
-                </div>
+            <div>
+              <h2>{settings.education.title}</h2>
+              <div className={styles.sectionsList}>
+                {education.map(({ name, startDate, endDate, degree }) => (
+                    <EducationRecord
+                        locale={locale}
+                        key={name}
+                        name={name}
+                        startDate={startDate}
+                        endDate={endDate}
+                        degree={degree}
+                    />
+                ))}
               </div>
-
+            </div>
+            <div className={styles['split-layout']}>
               <div>
-                <h2>{settings.workHistory.title}</h2>
-                <div className={styles.sectionsList}>
-                  {workHistory.map(({ companyName, location, position, startDate, endDate, description, responsibilities, achievements, technologies }) => (
-                      <WorkHistoryRecord
-                          locale={locale}
-                          settings={settings.workHistory.items}
-                          key={companyName}
-                          companyName={companyName}
-                          location={location}
-                          position={position}
-                          startDate={startDate}
-                          endDate={endDate}
-                          description={description}
-                          responsibilities={responsibilities}
-                          achievements={achievements}
-                          technologies={technologies}
-                      />
+                <h2>{settings.keySkills.title}</h2>
+                <dl>
+                  {keySkills.map((i) => (
+                    <Fragment key={i.label}>
+                      <dt>{i.label}</dt><dd>{i.value}</dd>
+                    </Fragment>
                   ))}
-                </div>
+                </dl>
               </div>
               <div>
-                <h2>{settings.education.title}</h2>
-                <div className={styles.sectionsList}>
-                  {education.map(({ name, startDate, endDate, degree }) => (
-                      <EducationRecord
-                          locale={locale}
-                          key={name}
-                          name={name}
-                          startDate={startDate}
-                          endDate={endDate}
-                          degree={degree}
-                      />
-                  ))}
-                </div>
+                <h2>{settings.language.title}</h2>
+                <dl>
+                  {language.map((i) => <Fragment key={i.label}><dt>{i.label}</dt><dd>{i.value}</dd></Fragment>)}
+                </dl>
               </div>
+            </div>
+
+            <div>
+              <h2>{settings.workHistory.title}</h2>
+              <div className={styles.sectionsList}>
+                {workHistory.map(({ companyName, location, position, startDate, endDate, description, responsibilities, achievements, technologies }) => (
+                    <WorkHistoryRecord
+                        locale={locale}
+                        settings={settings.workHistory.items}
+                        key={companyName}
+                        companyName={companyName}
+                        location={location}
+                        position={position}
+                        startDate={startDate}
+                        endDate={endDate}
+                        description={description}
+                        responsibilities={responsibilities}
+                        achievements={achievements}
+                        technologies={technologies}
+                    />
+                ))}
+              </div>
+            </div>
           </main>
         </div>
       </>
