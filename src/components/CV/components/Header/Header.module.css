@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr 190px;
   background-color: var(--dirty-blue);
   padding: 1.5rem 3rem;
   column-gap: 2rem;
@@ -21,6 +21,10 @@
 .summary {
   font-size: 1rem;
   margin-bottom: 0.6rem;
+}
+
+.summary strong {
+  font-weight: 700;
 }
 
 .avatar {

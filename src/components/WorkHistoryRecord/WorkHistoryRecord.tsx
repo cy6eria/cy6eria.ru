@@ -27,29 +27,31 @@ export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
 
     return (
       <section className={styles.section}>
-        <header className={styles.header}>
+        <header>
           <h3 className={styles.position}><span>{position}</span></h3>
-          <div className={styles.period}><time>{formater.format(startDate)}</time> – <time>{endDate === null ? 'Now' : formater.format(endDate)}</time></div>
         </header>
-        <h4><span className={styles.company}>{companyName}</span>, <address className={styles.address}>{location}</address></h4>
+        <div className="flex gap-2">
+          <h4><span className={styles.company}>{companyName}</span>, <address className={styles.address}>{location}</address></h4>
+          <div className={styles.period}>(<time>{formater.format(startDate)}</time> – <time>{endDate === null ? 'Now' : formater.format(endDate)}</time>)</div>
+        </div>
         {description && <ReactMarkdown>{description}</ReactMarkdown>}
 
-        {responsibilities && (
+        {/* {responsibilities && (
           <>
             <h4>{settings.responsibilities}</h4>
 
             <ReactMarkdown>{responsibilities}</ReactMarkdown>
           </>
-        )}
+        )} */}
 
         {achievements && (
           <>
-            <h4>{settings.achievements}</h4>
+            {/* <h4>{settings.achievements}</h4> */}
             <ReactMarkdown>{achievements}</ReactMarkdown>
           </>
         )}
 
-        <p className={styles.technologies}><b>{settings.technologies}</b>: {technologies.map((i) => <span key={i}>{i}</span>)}</p>
+        {/* <p className={styles.technologies}><b>{settings.technologies}</b>: {technologies.map((i) => <span key={i}>{i}</span>)}</p> */}
       </section>   
     );
 }

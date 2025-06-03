@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -23,7 +24,7 @@ export const Header = (props: HeaderProps) => {
           aria-label="Mid-age person wit light hair in glasses"
         />
       </div>
-      <div className={styles.summary}>{summary}</div>
+      <div className={styles.summary}><ReactMarkdown>{summary}</ReactMarkdown></div>
         <ul className={styles.contacts}>
           {contacts.map((i) => (
             <li key={i.type}>

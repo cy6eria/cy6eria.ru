@@ -1,6 +1,6 @@
 export const settings = {
   workHistory: {
-    title: 'Work history',
+    title: 'Professional Experience',
     items: {
       responsibilities: 'Responsibilities',
       achievements: 'Achievements',
@@ -16,12 +16,15 @@ export const settings = {
   },
   education: {
     title: 'Education',
+  },
+  highlights: {
+    title: 'Highlights',
   }
 }
 
 export const data = {
   name: 'Eugene Gundorov',
-  position: 'Lead Front-end developer',
+  position: 'Frontend (React) / Full-stack Developer',
   contacts: [
     {
       type: 'location',
@@ -41,33 +44,39 @@ export const data = {
     },
     {
       type: 'github',
-      value: 'cy6eria',
+      value: 'github.com/cy6eria',
     }
   ],
-  summary: 'Experienced Front-end Software Engineer with over 15 years in the industry. Proficient in React, Typescript, and modern web technologies. Extensive experience leading distributed teams, creating scalable web applications, and developing innovative solutions such as Web3 marketplaces and real-time visualization tools.',
+  summary: 'Experienced engineer with over 15 years in the industry. Proficient in React, Typescript, and modern web technologies. Extensive experience leading distributed teams, creating scalable web applications, and developing innovative solutions such as Web3 marketplaces and real-time visualization tools.',
+  highlights: [
+    'Improved mobile UX and app performance across multiple products',
+    'Hands-on with scalable architecture, legacy migrations, and modern tooling',
+    'Passion for DX and performance',
+  ],
   workHistory: [
     {
       companyName: 'Telleqt PTE, LTD',
       location: 'Singapore (Remote)',
       position: 'Full stack developer',
       startDate: new Date(2023, 2),
-      endDate: null,
-      description: 'The NFT market analytics platform.',
+      endDate: new Date(2025, 5),
+      description: '**Artacle.io** is AI-based platform intended to provide analytics to generative art professionals. It offers features like rarity scores, sales data, and analytics during the minting process, providing users with the ability to discover new collections and get valuable insights in one place.',
       responsibilities: `
 * Collaborated with stakeholders in a distributed team to define and implement new features.
 * Developed front-end (primarily) and back-end features; conducted code reviews and unit testing.
 * Authored technical documentation.
       `,
       achievements: `
-* Launched an NFT marketplace using the Seaport protocol.
-* Proposed and implemented a PWA as a cost-effective alternative to a mobile app.
-* Migrated codebase to typescript what helped to increase quality of new features.
+* Launched an NFT marketplace using the Seaport protocol which handled hundreds of transactions.
+* Improved mobile engagement by 30% with optimized mobile UI/UX.
+* Proposed and developed a PWA as a cost-effective alternative to a mobile app.
+*  Migrated legacy JS codebase to TypeScript, reducing new bug reports by 15%.
       `,
       technologies: ['React', 'Redux', 'Typescript', 'Ethereum', 'viem', 'wagmi', 'Seaport', 'MUI', 'Webpack', 'Next.js', 'Node.js', 'Agile'],
     },
     {
       companyName: 'Multibonus',
-      location: 'Russia, Moscow (Remote)',
+      location: 'Russia (Remote)',
       position: 'Lead Front-end developer',
       startDate: new Date(2021, 5),
       endDate: new Date(2023, 1),
@@ -78,14 +87,14 @@ export const data = {
 * Managed tasks among front-end developers, reviewed code, and ensured quality releases.
       `,
       achievements: `
-* Enhanced developer engagement in sprint discussions.
-* Инициировал переход с Reatom на Effector, что упростило процесс найма и разработки.
+* Led a 3-person frontend team with focus on sprint engagement and delivery.
+* Initiated migration from Reatom to Effector, streamlining issues handling and optimizing the hiring process for new developers.
       `,
       technologies: ['React', 'Typescript', 'Reatom', 'Effector', 'Styled Components', 'Webpack', 'Agile'],
     },
     {
       companyName: 'Sibintek',
-      location: 'Russia, Moscow (Remote)',
+      location: 'Russia (Remote)',
       position: 'Full-stack developer, Lead Front-end developer',
       startDate: new Date(2018, 3),
       endDate: new Date(2021, 5),
@@ -96,8 +105,9 @@ export const data = {
 * Mentored junior developers and conducted candidate interviews.
       `,
       achievements: `
-* Delivered three MVP projects successfully.
-* Integrated junior developers into the production process.
+* Migrated legacy JQuery based codebase to React, reducing the render time from 2s to 0.02s on real-life dataset.
+* Delivered 3 MVPs from scratch using React + Node.js, meeting all deadlines.
+* Mentored junior developers and conducted over 20 technical interviews.
       `,
       technologies: ['React', 'Typescript', 'Redux', 'SCSS', 'Styled Components', 'Webpack', 'REST', 'GraphQL (Apollo)', 'Node.js', 'Docker', 'git'],
     },
@@ -113,13 +123,13 @@ export const data = {
 * Developed new features, reviewed code, and conducted unit testing.
       `,
       achievements: `
-* Successfully implemented all legacy features and launched the beta version.
+* Rebuilt legacy banking portal into a modern React-based SPA.
       `,
       technologies: ['React', 'Redux', 'SCSS', 'Webpack', 'Agile', 'git'],
     },
       {
           companyName: 'IBM EE/A',
-          location: 'Russia, Moscow (Remote)',
+          location: 'Russia (Remote)',
           position: 'Front-end developer',
           startDate: new Date(2015, 2),
           endDate: new Date(2017, 9),
@@ -129,7 +139,8 @@ export const data = {
 * Migrated old features to a new stack.
           `,
           achievements: `
-* Delivered a new beta version with all legacy features.
+* Implemented React migration strategy for large enterprise application.
+* Delivered beta version with all legacy functionality integrated into modern stack.
           `,
           technologies: ['React', 'Redux', 'Typescript', 'SCSS', 'Webpack', 'Sketch', 'Agile', 'git'],
       },
@@ -140,6 +151,7 @@ export const data = {
           startDate: new Date(2010, 5),
           endDate: new Date(2015, 2),
           description: 'I was working in the companies such as Flatstack, Racoons Group, Finmarket, Funbox, Brand',
+          achievements: `* Participated in early-stage startups and outsourcing projects.`,
           technologies: ['HTML', 'CSS', 'SCSS', 'JQuery', 'AngularJS', 'Javascript', 'PHP Symfony', 'Ruby on Rails', 'Photoshop', 'git'],
       },
   ],
@@ -150,7 +162,7 @@ export const data = {
     },
     {
       label: 'Front-end',
-      value: 'React, Redux, Styled Components, Tailwind, Material UI',
+      value: 'React, Redux, Effector, Styled Components, Tailwind, Material UI, PWA',
     },
     {
       label: 'Back-end',
@@ -162,15 +174,15 @@ export const data = {
     },
     {
       label: 'Web3',
-      value: 'Ethereum, Seaport Protocol',
+      value: 'Ethereum, Seaport, viem, wagmi',
     },
     {
       label: 'Tools',
-      value: 'Docker, Webpack, Git',
+      value: 'Docker, Webpack, Git, CI/CD',
     },
     {
       label: 'Practices',
-      value: 'Agile, Unit Testing, Code Review'
+      value: 'Agile (Scrum), Unit Testing, Code Review, TDD'
     }
   ],
   language: [
