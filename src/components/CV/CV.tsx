@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useRef, /* useState */ } from 'react';
 import { WorkHistoryRecord } from '../WorkHistoryRecord';
 import { EducationRecord } from '../EducationRecord';
 import { Header } from './components';
@@ -19,7 +19,8 @@ interface CVProps {
 }
 
 export const CV = (props: CVProps) => {
-    const [locale, setLocale] = useState<'en'|'es'>('en');
+    // const [locale, setLocale] = useState<'en'|'es'>('en');
+    const locale = 'en';
     const cvContainer = useRef(null);
 
     const { settings, data } = props[locale] ?? props.en;
@@ -40,7 +41,7 @@ export const CV = (props: CVProps) => {
                   <h2>{settings.highlights.title}</h2>
                   <ul className="list-disc list-inside">
                     {highlights.map((value) => (
-                      <li>{value}</li>
+                      <li key={value}>{value}</li>
                     ))}
                   </ul>
                 </div>

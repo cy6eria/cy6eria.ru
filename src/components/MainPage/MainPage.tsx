@@ -42,7 +42,7 @@ export const MainPage = (props: MainPageProps) => {
         </>
       ),
     }
-  }, []);
+  }, [language]);
 
   return (
     <main className="bg-white dark:bg-slate-800">

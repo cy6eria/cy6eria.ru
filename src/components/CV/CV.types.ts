@@ -17,6 +17,9 @@ export interface Settings {
   education: {
     title: string;
   };
+  highlights: {
+    title: string;
+  };
 }
 
 export interface Data {
@@ -46,4 +49,5 @@ export interface Data {
   }[];
   keySkills: { label: string, value: string }[];
   language: { label: string, value: string }[];
+  highlights: string[];
 }

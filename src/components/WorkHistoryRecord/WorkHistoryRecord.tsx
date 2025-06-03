@@ -21,7 +21,7 @@ interface WorkHistoryRecordProps {
 }
 
 export const WorkHistoryRecord = (props: WorkHistoryRecordProps) => {
-    const { locale, settings, companyName, location, position, startDate, endDate, description, responsibilities, achievements, technologies } = props;
+    const { locale, companyName, location, position, startDate, endDate, description, achievements, /* settings, technologies, responsibilities */ } = props;
 
     const formater = Intl.DateTimeFormat(locale ?? 'en', { year: 'numeric', month: 'short' });
 
