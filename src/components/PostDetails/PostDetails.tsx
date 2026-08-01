@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { format } from '@core';
 import { ChevronIcon } from '../ChevronIcon'
 import { MiniPost } from '../MiniPost';
-import styles from './PostDetails.module.scss';
+import styles from './PostDetails.module.css';
 
 interface ReducedPost {
   _id: string;
